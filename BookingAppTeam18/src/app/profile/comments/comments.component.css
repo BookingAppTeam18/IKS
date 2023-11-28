@@ -1,0 +1,51 @@
+
+.comment-container {
+    max-width: 100%;
+    margin: 20px;
+    box-sizing: border-box;
+    padding: 20px; 
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.comment-box {
+    background-color: white;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+
+.username-box {
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.comment-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.comment-content {
+    margin-bottom: 10px;
+}
+
+.report-button {
+    align-self: flex-end;
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.report-button:hover {
+    background-color: #555;
+}
