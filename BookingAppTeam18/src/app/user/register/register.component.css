@@ -1,0 +1,95 @@
+body {
+  background-color: #FBF4EF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color:  #586870;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.shadow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 845px;
+  height: 617px;
+  border-radius: 30px;
+}
+
+div.register-form{
+  width: 771px;
+  height: 550px;
+  border-radius: 30px;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+div.left-form{
+  float: left;
+}
+
+div.right-form{
+  float: right;
+}
+
+.register-form {
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-form,
+.right-form {
+  flex: 1;
+  padding: 0 10px;
+}
+
+input{
+  border-radius: 8px;
+  width: 200px;
+  height: 35px;
+  flex-shrink: 0;
+  border: 1px solid #C0C6C9;
+}
+
+div.form-group{
+  margin: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+button{
+  margin-top: 30px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  background: linear-gradient(180deg, rgba(33, 72, 192, 0.30) 0%, rgba(79, 76, 232, 0.26) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  height: 45px;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  justify-content: center;
+}
+
