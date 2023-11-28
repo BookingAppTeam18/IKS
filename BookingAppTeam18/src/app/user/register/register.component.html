@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
           <label>Email*</label>
-          <input type="text" id="email" name="email" required placeholder="Email">
+          <input type="text" id="email" name="email" required>
         </div>
       </div>
       <div method="post" class="right-form">
@@ -38,13 +38,16 @@
           <label>Confirm password*</label>
           <input type="text" id="confirm-password" name="confirm-password" required>
         </div>
-<!--        <div class="form-group-radioBTN">-->
-<!--          <label>User type*</label>-->
-<!--          <input type="radio" id="owner" name="owner" value="OWNER">-->
-<!--          <label for="owner">Owner</label><br>-->
-<!--          <input type="radio" id="guest" name="guest" value="GUEST">-->
-<!--          <label for="guest">Guest</label><br>-->
-<!--        </div>-->
+        <div class="form-group">
+          <label id="user-type">User type*</label>
+          <div class="radio-container">
+            <label class="rbtn" for="owner" >Owner &nbsp;</label>
+            <input class="rbtn" type="radio" id="owner" name="owner" value="OWNER">
+            <br>
+            <label class="rbtn1" for="guest">Guest &nbsp;</label>
+            <input class="rbtn1" type="radio" id="guest" name="guest" value="GUEST">
+          </div>
+        </div>
       </div>
       <button type="button">Sign Up</button>
     </form>
