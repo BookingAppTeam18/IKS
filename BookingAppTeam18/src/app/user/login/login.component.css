@@ -1,0 +1,83 @@
+body {
+  background-color: #FBF4EF;
+  /*font-family: Montserrat;*/
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color:  #586870;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.shadow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 493px;
+  height: 750px;
+  border-radius: 30px;
+}
+div.login-form{
+  width: 375px;
+  height: 667px;
+  border-radius: 30px;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+img.logo-image{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+input{
+  border-radius: 8px;
+  width: 300px;
+  height: 45px;
+  flex-shrink: 0;
+  border: 1px solid #C0C6C9;
+}
+
+div.form-group{
+  margin: 20px;
+}
+
+form{
+  margin-top: 100px;
+}
+
+button{
+  border-radius: 30px;
+  border: 1px solid #000;
+  background: linear-gradient(180deg, rgba(33, 72, 192, 0.30) 0%, rgba(79, 76, 232, 0.26) 100%);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  height: 45px;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+}
+
+label {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-group i {
+  position: absolute;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
