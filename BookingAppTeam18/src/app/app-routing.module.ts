@@ -10,11 +10,10 @@ import {UserInfoComponent} from "./profile/user-info/user-info.component";
 
 const routes: Routes = [
   {component: HomeComponent, path:"home"},
-  {component: AccommodationsComponent, path:"accommodations"},
+  {component: AccommodationsComponent, path:""},
   {component: CreateAccommodationComponent, path:"create-accommodation"},
   {component: LoginComponent, path:"log-in"},
   {component: RegisterComponent, path:"register"},
-  {component: CommentsComponent, path:"comments"},
   {component: UserInfoComponent, path:"user-info"}
 ];
 

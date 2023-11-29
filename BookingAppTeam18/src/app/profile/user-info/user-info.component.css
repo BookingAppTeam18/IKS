@@ -1,5 +1,7 @@
 body{
-    background-color:burlywood;
+    background-color: #FBF4EF;
+    display: flex;
+    flex-direction: column;
 }
 
 
