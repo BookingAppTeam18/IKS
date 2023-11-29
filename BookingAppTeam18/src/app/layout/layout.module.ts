@@ -8,6 +8,8 @@ import {RouterModule} from "@angular/router";
 import { NavBarGuestComponent } from './nav-bar-guest/nav-bar-guest.component';
 import { NavBarUserComponent } from './nav-bar-user/nav-bar-user.component';
 import { NavBarOwnerComponent } from './nav-bar-owner/nav-bar-owner.component';
+import {MatIconModule} from "@angular/material/icon";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -22,12 +24,17 @@ import { NavBarOwnerComponent } from './nav-bar-owner/nav-bar-owner.component';
   ],
   exports: [
     NavBarComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavBarGuestComponent,
+    NavBarUserComponent,
+    NavBarOwnerComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    MatIconModule,
+    FormsModule
   ]
 })
 export class LayoutModule { }

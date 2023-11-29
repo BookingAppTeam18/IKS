@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar-guest.component.css']
 })
 export class NavBarGuestComponent {
-
+  value: string = '';
 }
