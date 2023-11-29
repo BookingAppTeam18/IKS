@@ -42,11 +42,13 @@ body{
 .report-button {
     align-self: flex-end;
     padding: 8px 12px;
-    border-radius: 25px;
-    background-color: gray;
+
+    border-radius: 30px;
+    border: 1px solid #000;
+    background: linear-gradient(180deg, rgba(33, 72, 192, 0.30) 0%, rgba(79, 76, 232, 0.26) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: white;
     text-decoration: none;
-    border: none;
     cursor: pointer;
 }
 
