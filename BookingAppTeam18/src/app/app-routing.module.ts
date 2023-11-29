@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {WineComponent} from "./wine/wine/wine.component";
 import {HomeComponent} from "./layout/home/home.component";
-import {CreateWineComponent} from "./wine/create-wine/create-wine.component";
+import {AccommodationsComponent} from "./accommodation/accommodations/accommodations.component";
+import {CreateAccommodationComponent} from "./accommodation/create-accommodation/create-accommodation.component";
 
 const routes: Routes = [
-  {component: WineComponent, path:"wine"},
   {component: HomeComponent, path:"home"},
-  {component: CreateWineComponent, path:"create"}
+  {component: AccommodationsComponent, path:"accommodations"},
+  {component: CreateAccommodationComponent, path:"create-accommodation"}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

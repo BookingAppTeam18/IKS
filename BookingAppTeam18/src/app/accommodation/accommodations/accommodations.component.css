@@ -1,0 +1,75 @@
+#icons{
+  padding-left: 20px;
+}
+#icons>img{
+  padding: 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 30px 0px 30px 0px;
+  margin: 50px;
+  width: 90%;
+
+}
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+/* Remove extra left and right margins, due to padding */
+#cards {
+  margin: auto;
+  width: 95%;
+}
+
+/* Clear floats after the columns */
+#cards:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Float four columns side by side */
+.column {
+  width: 23%;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.details {
+  padding-left: 16px;
+  align-self: flex-start;
+  width: 60%;
+}
+
+p,h4{
+  font-family: "pinyon Script", monospace;
+  font-size: 28px;
+}
+
+.icon{
+  align-self: flex-end;
+  padding-right: 10px;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}

@@ -4,22 +4,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {LayoutModule} from "./layout/layout.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {WineModule} from "./wine/wine.module";
 import {UserModule} from "./user/user.module";
 import { ProfileModule } from './profile/profile.module';
+import {AccommodationModule} from "./accommodation/accommodation.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
     BrowserAnimationsModule,
-    WineModule,
     UserModule,
-    ProfileModule
+    ProfileModule,
+    AccommodationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
