@@ -29,7 +29,8 @@ import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
     HeaderComponent,
     NavBarGuestComponent,
     NavBarUserComponent,
-    NavBarOwnerComponent
+    NavBarOwnerComponent,
+    NavBarAdminComponent
   ],
   imports: [
     CommonModule,
