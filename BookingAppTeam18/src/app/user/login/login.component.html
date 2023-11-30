@@ -7,7 +7,7 @@
 <div class="shadow">
   <div class="login-form">
     <img src="../../assets/images/logo.png" height="61" width="98" alt="logo" class="logo-image"/>
-    <form method="post">
+    <form [formGroup]='loginForm' (ngSubmit)="login()">
       <div class="form-group">
         <i class="fa fa-user icon"></i>
         <input type="text" id="email" name="email" required placeholder="Email">
@@ -16,7 +16,7 @@
         <i class="fa fa-key icon"></i>
         <input type="text" id="password" name="password" required placeholder="Password">
       </div>
-      <button type="button">LOGIN</button>
+      <button type="submit">LOGIN</button>
       <label>Forgot password?</label>
     </form>
   </div>
