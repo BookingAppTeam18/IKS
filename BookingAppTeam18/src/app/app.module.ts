@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {UserModule} from "./user/user.module";
 import { ProfileModule } from './profile/profile.module';
 import {AccommodationModule} from "./accommodation/accommodation.module";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {AccommodationModule} from "./accommodation/accommodation.module";
     BrowserAnimationsModule,
     UserModule,
     ProfileModule,
-    AccommodationModule
+    AccommodationModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

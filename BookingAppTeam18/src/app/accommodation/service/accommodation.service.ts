@@ -4,9 +4,7 @@ import {Observable} from "rxjs";
 import {Accommodation} from "../model/accommodation";
 import {AccommodationModule} from "../accommodation.module";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AccommodationService {
 
   private readonly path = "/api/accommodations";
