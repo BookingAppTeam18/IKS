@@ -12,7 +12,7 @@ import {ProfileModule} from "../profile/profile.module";
   declarations: [
     AccommodationsComponent,
     CreateAccommodationComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +22,7 @@ import {ProfileModule} from "../profile/profile.module";
   exports:[
     AccommodationsComponent,
     CreateAccommodationComponent,
-    DetailsComponent
+    DetailsComponent,
   ]
 })
 export class AccommodationModule { }
