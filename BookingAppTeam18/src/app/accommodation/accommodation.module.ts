@@ -5,6 +5,7 @@ import { CreateAccommodationComponent } from './create-accommodation/create-acco
 import { DetailsComponent } from './details/details.component';
 import {RouterLink} from "@angular/router";
 import {ProfileModule} from "../profile/profile.module";
+import {AccommodationsService} from "./services/accommodations.service";
 
 
 
@@ -18,6 +19,9 @@ import {ProfileModule} from "../profile/profile.module";
     CommonModule,
     RouterLink,
     ProfileModule
+  ],
+  providers:[
+    AccommodationsService,
   ],
   exports:[
     AccommodationsComponent,

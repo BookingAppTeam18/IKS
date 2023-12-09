@@ -24,15 +24,15 @@
   </div>
 
 <hr>
-<div id="cards" >
-  <div class ="column" >
-    <div class="card" routerLink="/details">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
+<div id="cards">
+  <div class="column" *ngFor="let accommodation of accommodations">
+    <div class="card" routerLink="/{{accommodation._id}}">
+      <img src="https://picsum.photos/300/300" alt="Avatar">
+      <h4><b>{{accommodation.name}}</b></h4>
       <div class="container">
         <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
+          <p>Price: CENA NEKA NEMA SAD</p>
+          <p>{{accommodation.location}}</p>
         </div>
         <div class="icon">
           <img src="https://picsum.photos/50/50">
@@ -40,181 +40,182 @@
       </div>
     </div>
   </div>
-
-  <div class ="column" routerLink="/details">
-    <div class="card" >
-      <img src="https://picsum.photos/300/300" alt="Avatar" routerLink="/details">
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column" routerLink="/details">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="column">
-    <div class="card">
-      <img src="https://picsum.photos/300/300" alt="Avatar" >
-      <h4><b>Accommodation 1</b></h4>
-      <div class="container">
-        <div class="details">
-          <p>Price: 599.99</p>
-          <p>Location: Brazil</p>
-        </div>
-        <div class="icon">
-          <img src="https://picsum.photos/50/50">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
 </div>
+
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card" >-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" routerLink="/details">-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column" routerLink="/details">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class ="column">-->
+<!--    <div class="card">-->
+<!--      <img src="https://picsum.photos/300/300" alt="Avatar" >-->
+<!--      <h4><b>Accommodation 1</b></h4>-->
+<!--      <div class="container">-->
+<!--        <div class="details">-->
+<!--          <p>Price: 599.99</p>-->
+<!--          <p>Location: Brazil</p>-->
+<!--        </div>-->
+<!--        <div class="icon">-->
+<!--          <img src="https://picsum.photos/50/50">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+
+
+
+
+
+
+
+
+<!--</div>-->
