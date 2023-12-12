@@ -23,9 +23,14 @@ body{
 
 .edit_user_info_button{
     padding: 8px 12px;
-    width: 100px;
+    width: 135px;
     cursor: pointer;
-    margin-left: auto;
+}
+
+#edit-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #info_row {

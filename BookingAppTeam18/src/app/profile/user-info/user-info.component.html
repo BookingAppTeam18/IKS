@@ -10,27 +10,22 @@
         <div class="info_container">
             <div id="info_row">
                 <label for="first_name">First name: </label>
-                <input type="button" class="edit_user_info_button" value="Edit">
             </div>
             <div id="info_row">
                 <label for="last_name">Last name: </label>
-                <input type="button" class="edit_user_info_button" value="Edit">
             </div>
             <div id="info_row">
                 <label for="email">Email: </label>
-                <input type="button" class="edit_user_info_button" value="Edit">
             </div>
             <div id="info_row">
                 <label for="phone">Phone: </label>
-                <input type="button" class="edit_user_info_button" value="Edit">
-            </div>
-            <div id="info_row">
-                <label for="password">Password: </label>
-                <input type="button" class="edit_user_info_button" value="Edit">
             </div>
             <div id="info_row">
                 <label for="address">Address: </label>
-                <input type="button" class="edit_user_info_button" value="Edit">
+            </div>
+            <div id="edit-buttons">
+                <input type="button" class="edit_user_info_button" value="Edit info" (click)="navigateToEditUser()">
+                <input type="button" class="edit_user_info_button" value="Change password" (click)="navigateToChangePassword()">
             </div>
         </div>
     </div>
@@ -40,4 +35,5 @@
   <div class="comments">
     <app-comments></app-comments>
   </div>
+
 </body>
