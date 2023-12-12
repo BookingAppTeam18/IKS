@@ -1,6 +1,5 @@
-import {Accommodation} from "../../../accommodation/accommodations/model/accommodation";
-
-export interface Comment {
+import {Page} from "./page"
+export interface CommentDTO {
    id:number;
    message:string;
    rate:number;

@@ -1,4 +1,4 @@
-enum AccommodationType{
+export enum AccommodationType{
   ROOM,
   APARTMENT,
   STUDIO,

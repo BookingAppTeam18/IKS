@@ -1,4 +1,4 @@
-enum Benefit{
+export enum Benefit{
   NONE=1,
   WIFI,
   AIR_CONDITIONER,

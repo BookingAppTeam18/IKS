@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Accommodation} from "../accommodations/model/accommodation";
+import {AccommodationDTO} from "../accommodations/model/accommodation";
 import {AccommodationModule} from "../accommodation.module";
 import {environment} from "../../../env/env";
-import {AccommodationDetails} from "../details/model/accommodationDetails";
+import {AccommodationDetailsDTO} from "../details/model/accommodationDetails";
 
 @Injectable()
 export class AccommodationService {
@@ -13,12 +13,12 @@ export class AccommodationService {
   constructor(private http: HttpClient) { }
 
 
-  getAll():Observable<Accommodation[]> {
-    return this.http.get<Accommodation[]>(this.path);
+  getAll():Observable<AccommodationDTO[]> {
+    return this.http.get<AccommodationDTO[]>(this.path);
   }
 
-  get(id:number):Observable<Accommodation>{
-    return this.http.get<Accommodation>(this.path+`/${id}`);
+  get(id:number):Observable<AccommodationDTO>{
+    return this.http.get<AccommodationDTO>(this.path+`/${id}`);
   }
 
   save(accommodation:AccommodationModule){
@@ -28,7 +28,7 @@ export class AccommodationService {
   delete(id:number){
     return this.http.delete(this.path+`/${id}`);
   }
-  getAccommodationDetails(id: number): Observable<AccommodationDetails> {
-    return this.http.get<AccommodationDetails>(environment.apiHost + 'accommodations/details' + id)
+  getAccommodationDetails(id: number): Observable<AccommodationDetailsDTO> {
+    return this.http.get<AccommodationDetailsDTO>(environment.apiHost +this.path+ '/details/' + id)
   }
 }

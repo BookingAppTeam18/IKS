@@ -1,4 +1,4 @@
-enum Page{
-  Accommodation=1,
-  account,
+export enum Page{
+  ACCOMMODATION=1,
+  ACCOUNTS,
 }

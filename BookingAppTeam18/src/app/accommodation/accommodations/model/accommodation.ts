@@ -1,4 +1,8 @@
-export interface Accommodation {
+import { AccommodationType } from './accommodationType';
+import { Benefit } from './benefit';
+
+
+export interface AccommodationDTO {
   _id?:number;
   owner:number;
   name:string;
