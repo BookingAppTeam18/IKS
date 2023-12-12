@@ -1,0 +1,43 @@
+
+<body>
+  <div id="reservation-component">
+    <div class="calendars">
+      <div class="calendar">
+        <p>Molimo Vas izaberite Pocetak : </p>
+        <mat-card class="demo-inline-calendar-card" >
+          <mat-calendar  [(selected)]="start" [dateFilter]="myHolidayFilter" (selectedChange)="onStartChange()" [minDate] = "startMinDate" [maxDate]="startMaxDate"></mat-calendar>
+        </mat-card>
+      </div>
+      <div class="calendar">
+        <p>Molimo Vas izaberite kraj : </p>
+        <mat-card class="demo-inline-calendar-card" >
+          <mat-calendar [(selected)]="end" [dateFilter]="myHolidayFilter" (selectedChange)="onEndChange()" [minDate]="endMinDate"></mat-calendar>
+        </mat-card>
+      </div>
+    </div>
+    <div class="reserve_box">
+        <div class="info_frame">
+        <div id="user_info_text">
+          <label>Reservation Info</label>
+        </div>
+        <div class="info_container">
+          <div class="info_row">
+            <label>Start Date : {{start?.getDate()}}:{{start?.getMonth()}}:{{start?.getFullYear()}}</label>
+          </div>
+          <div class="info_row">
+            <label>End Date : {{end?.getDate()}}:{{end?.getMonth()}}:{{end?.getFullYear()}}</label>
+          </div>
+          <div class="info_row">
+            <label>Number of Guests : </label>
+            <br>
+            <input/>
+          </div>
+          <div class="info_row">
+            <label>Price : </label>
+          </div>
+          <button type="submit">Reserve</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

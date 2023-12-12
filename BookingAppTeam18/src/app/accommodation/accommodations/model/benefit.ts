@@ -1,0 +1,13 @@
+export enum Benefit{
+  NONE=1,
+  WIFI,
+  AIR_CONDITIONER,
+  KITCHEN,
+  FREE_PARKING,
+  TV,
+  BALCONY,
+  BACKYARD,
+  PET_FRIENDLY,
+  ELEVATOR,
+  BABY_HIGHCHAIR,
+}

@@ -12,8 +12,8 @@ import {UserInfoComponent} from "./profile/user-info/user-info.component";
 const routes: Routes = [
   {component: HomeComponent, path:"home"},
   {component: AccommodationsComponent, path:""},
-  {component: DetailsComponent, path:"details"},
-  {component: CreateAccommodationComponent, path:"create-accommodation"},
+  {component: DetailsComponent, path:"details/:accommodationId"},
+  {component: CreateAccommodationComponent, path:"create-model"},
   {component: LoginComponent, path:"log-in"},
   {component: RegisterComponent, path:"register"},
   {component: UserInfoComponent, path:"user-info"}

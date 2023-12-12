@@ -5,6 +5,14 @@ import { CreateAccommodationComponent } from './create-accommodation/create-acco
 import { DetailsComponent } from './details/details.component';
 import {RouterLink} from "@angular/router";
 import {ProfileModule} from "../profile/profile.module";
+import {AccommodationService} from "./service/accommodation.service";
+import { ReserveComponent } from './reserve/reserve.component';
+import {DxCalendarModule} from "devextreme-angular";
+import {NgbDatepicker} from "@ng-bootstrap/ng-bootstrap";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -12,17 +20,26 @@ import {ProfileModule} from "../profile/profile.module";
   declarations: [
     AccommodationsComponent,
     CreateAccommodationComponent,
-    DetailsComponent
+    DetailsComponent,
+    ReserveComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterLink,
-    ProfileModule
+    imports: [
+        CommonModule,
+        RouterLink,
+        ProfileModule,
+        DxCalendarModule,
+        NgbDatepicker,
+        FormsModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatCardModule
+    ],providers: [
+    AccommodationService,
   ],
   exports:[
     AccommodationsComponent,
     CreateAccommodationComponent,
-    DetailsComponent
+    DetailsComponent,
   ]
 })
 export class AccommodationModule { }
