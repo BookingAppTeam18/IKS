@@ -7,6 +7,11 @@ import {RouterLink} from "@angular/router";
 import {ProfileModule} from "../profile/profile.module";
 import {AccommodationService} from "./service/accommodation.service";
 import { ReserveComponent } from './reserve/reserve.component';
+import {DxCalendarModule} from "devextreme-angular";
+import {NgbDatepicker} from "@ng-bootstrap/ng-bootstrap";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 
@@ -20,7 +25,12 @@ import { ReserveComponent } from './reserve/reserve.component';
   imports: [
     CommonModule,
     RouterLink,
-    ProfileModule
+    ProfileModule,
+    DxCalendarModule,
+    NgbDatepicker,
+    FormsModule,
+    MatInputModule,
+    MatDatepickerModule
   ],providers: [
     AccommodationService,
   ],
