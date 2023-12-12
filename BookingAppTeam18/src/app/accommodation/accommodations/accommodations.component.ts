@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {AccommodationDTO} from "./model/accommodation";
+import {Accommodation} from "./model/accommodation";
 import {AccommodationService } from "../service/accommodation.service";
 
 @Component({
@@ -9,7 +9,7 @@ import {AccommodationService } from "../service/accommodation.service";
   styleUrls: ['./accommodations.component.css']
 })
 export class AccommodationsComponent implements OnInit{
-  accommodations: Observable<AccommodationDTO[]>;
+  accommodations: Observable<Accommodation[]>;
 
   constructor(private accommodationService:AccommodationService) {
   }

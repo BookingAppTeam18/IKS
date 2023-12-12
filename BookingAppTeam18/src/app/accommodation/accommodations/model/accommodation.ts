@@ -2,9 +2,9 @@ import { AccommodationType } from './accommodationType';
 import { Benefit } from './benefit';
 
 
-export interface AccommodationDTO {
+export interface Accommodation {
   _id?:number;
-  owner:number;
+  ownerId:number;
   name:string;
   longitude:number;
   latitude:number;

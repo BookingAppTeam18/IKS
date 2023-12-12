@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {AccommodationDTO} from "../accommodations/model/accommodation";
+import {Accommodation} from "../accommodations/model/accommodation";
 import {ActivatedRoute} from "@angular/router";
 import {AccommodationService} from "../service/accommodation.service";
-import {AccommodationDetailsDTO} from "./model/accommodationDetails";
+import {AccommodationDetails} from "./model/accommodationDetails";
 
 @Component({
   selector: 'app-details',
@@ -10,7 +10,7 @@ import {AccommodationDetailsDTO} from "./model/accommodationDetails";
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  accommodationDetailsDTO: AccommodationDetailsDTO;
+  accommodationDetailsDTO: AccommodationDetails;
 
   constructor(private route: ActivatedRoute, private accommodationService: AccommodationService) {
   }
@@ -19,7 +19,7 @@ export class DetailsComponent {
     this.route.params.subscribe((params) => {
       const id = +params['accommodationId']
       this.accommodationService.getAccommodationDetails(id).subscribe({
-        next: (data: AccommodationDetailsDTO) => { this.accommodationDetailsDTO = data }
+        next: (data: AccommodationDetails) => { this.accommodationDetailsDTO = data }
       })
     })
   }

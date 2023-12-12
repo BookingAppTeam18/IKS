@@ -1,5 +1,5 @@
 import {Page} from "./page"
-export interface CommentDTO {
+export interface Comment{
    id:number;
    message:string;
    rate:number;
