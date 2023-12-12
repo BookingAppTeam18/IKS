@@ -12,6 +12,7 @@ import {NgbDatepicker} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -22,16 +23,17 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     DetailsComponent,
     ReserveComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterLink,
-    ProfileModule,
-    DxCalendarModule,
-    NgbDatepicker,
-    FormsModule,
-    MatInputModule,
-    MatDatepickerModule
-  ],providers: [
+    imports: [
+        CommonModule,
+        RouterLink,
+        ProfileModule,
+        DxCalendarModule,
+        NgbDatepicker,
+        FormsModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatCardModule
+    ],providers: [
     AccommodationService,
   ],
   exports:[

@@ -41,7 +41,7 @@ body{
   margin-left: auto;
 }
 
-#info_row {
+.info_row {
   font-family: "pinyon Script", monospace;
   font-size: 28px;
   display: flex;
