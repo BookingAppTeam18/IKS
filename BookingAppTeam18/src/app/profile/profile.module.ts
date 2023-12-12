@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { CommentsComponent } from './comments/comments.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -10,7 +11,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
   declarations: [
     UserInfoComponent,
     CommentsComponent,
-    EditUserComponent
+    EditUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
   exports:[
     UserInfoComponent,
     CommentsComponent,
-    EditUserComponent
+    EditUserComponent,
+    ChangePasswordComponent
   ]
 })
 export class ProfileModule { }

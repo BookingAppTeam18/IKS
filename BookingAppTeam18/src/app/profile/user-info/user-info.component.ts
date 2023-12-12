@@ -12,4 +12,7 @@ export class UserInfoComponent {
   navigateToEditUser(): void {
     this.router.navigate(['/user-info/edit-user']);
   }
+  navigateToChangePassword(): void {
+    this.router.navigate(['/user-info/change-password']);
+  }
 }
