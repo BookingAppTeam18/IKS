@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
-import {DateAdapter} from '@angular/material/core';
-import {start} from "@popperjs/core";
 
 
 
@@ -41,7 +39,7 @@ export class ReserveComponent {
     return !this.myHolidayDates.find(x=>x.getTime()==time);
   }
 
-  constructor(private _adapter: DateAdapter<any>) {
+  constructor() {
 
     this.start =new Date();
     this.start.setDate(this.start.getDate() +1);
