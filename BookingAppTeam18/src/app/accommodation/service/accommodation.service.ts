@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Accommodation} from "../model/accommodation";
+import {Accommodation} from "../accommodations/model/accommodation";
 import {AccommodationModule} from "../accommodation.module";
 import {environment} from "../../../env/env";
+import {AccommodationDetails} from "../details/model/accommodationDetails";
 
 @Injectable()
 export class AccommodationService {
@@ -27,7 +28,7 @@ export class AccommodationService {
   delete(id:number){
     return this.http.delete(this.path+`/${id}`);
   }
-  getAccommodation(id: number): Observable<Accommodation> {
-    return this.http.get<Accommodation>(environment.apiHost + 'accommodations/' + id)
+  getAccommodationDetails(id: number): Observable<AccommodationDetails> {
+    return this.http.get<AccommodationDetails>(environment.apiHost + 'accommodations/details' + id)
   }
 }
