@@ -4,6 +4,7 @@ export interface Comment{
    message:string;
    rate:number;
    writtenById:number;
+   writtenByName:string;
    writtenToId:number;
    page:Page;
 
