@@ -11,14 +11,14 @@ body {
     justify-content: center;
     align-items: center;
   }
-  div.shadow{
+  .shadow{
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 30px;
     background-color: rgba(0, 0, 0, 0.25);
     width: 493px;
-    height: 800px;
+    height: 750px;
   }
   form{
     width: 375px;

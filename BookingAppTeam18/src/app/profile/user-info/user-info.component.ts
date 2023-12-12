@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-info.component.css']
 })
 export class UserInfoComponent {
+  constructor(private router: Router) {}
 
+  navigateToEditUser(): void {
+    this.router.navigate(['/user-info/edit-user']);
+  }
 }

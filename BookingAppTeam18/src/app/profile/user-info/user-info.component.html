@@ -24,7 +24,7 @@
                 <label for="address">Address: </label>
             </div>
             <div id="edit-buttons">
-                <input type="button" class="edit_user_info_button" value="Edit info">
+                <input type="button" class="edit_user_info_button" value="Edit info" (click)="navigateToEditUser()">
                 <input type="button" class="edit_user_info_button" value="Change password">
             </div>
         </div>
@@ -34,9 +34,6 @@
   </div>
   <div class="comments">
     <app-comments></app-comments>
-  </div>
-  <div class="edit-user">
-    <app-edit-user></app-edit-user>
   </div>
 
 </body>
