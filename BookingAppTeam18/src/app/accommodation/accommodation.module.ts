@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import {RouterLink} from "@angular/router";
 import {ProfileModule} from "../profile/profile.module";
 import {AccommodationService} from "./service/accommodation.service";
+import { ReserveComponent } from './reserve/reserve.component';
 
 
 
@@ -14,6 +15,7 @@ import {AccommodationService} from "./service/accommodation.service";
     AccommodationsComponent,
     CreateAccommodationComponent,
     DetailsComponent,
+    ReserveComponent,
   ],
   imports: [
     CommonModule,
