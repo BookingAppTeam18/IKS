@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Profile } from '../model/profile.module';
 
 @Component({
   selector: 'app-user-info',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-info.component.css']
 })
 export class UserInfoComponent {
+
+  profile : Profile  = {  id: 1, firstName: 'Ime', lastName: 'prezime', email: 'email', phoneNumber: 'brtel', address: 'adresa' } ;
   constructor(private router: Router) {}
 
   navigateToEditUser(): void {
