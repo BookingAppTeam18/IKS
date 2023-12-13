@@ -9,23 +9,28 @@
         </div>
         <div class="info_container">
             <div id="info_row">
-                <label for="first_name">First name: </label>
+                <label for="first_name">First name: &nbsp;</label>
+                <label>{{profile.firstName}}</label>
             </div>
             <div id="info_row">
-                <label for="last_name">Last name: </label>
+                <label for="last_name">Last name:&nbsp; </label>
+                <label>{{profile.lastName}}</label>
             </div>
             <div id="info_row">
-                <label for="email">Email: </label>
+                <label for="email">Email: &nbsp;</label>
+                <label>{{profile.email}}</label>
             </div>
             <div id="info_row">
-                <label for="phone">Phone: </label>
+                <label for="phone">Phone: &nbsp;</label>
+                <label>{{profile.phone}}</label>
             </div>
             <div id="info_row">
-                <label for="address">Address: </label>
+                <label for="address">Address: &nbsp;</label>
+                <label>{{profile.address}}</label>
             </div>
             <div id="edit-buttons">
                 <input type="button" class="edit_user_info_button" value="Edit info" (click)="navigateToEditUser()">
-                <input type="button" class="edit_user_info_button" value="Change password" (click)="navigateToChangePassword()">
+                <!-- <input type="button" class="edit_user_info_button" value="Change password" (click)="navigateToChangePassword()"> -->
             </div>
         </div>
     </div>
