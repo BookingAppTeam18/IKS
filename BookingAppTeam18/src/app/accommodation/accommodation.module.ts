@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatCardModule} from "@angular/material/card";
+import { FilterComponent } from './filter/filter.component';
 
 
 
@@ -20,6 +21,7 @@ import {MatCardModule} from "@angular/material/card";
     CreateAccommodationComponent,
     DetailsComponent,
     ReserveComponent,
+    FilterComponent,
   ],
     imports: [
         CommonModule,
