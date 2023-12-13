@@ -11,7 +11,7 @@ import { ProfileService } from '../profile.service';
 export class UserInfoComponent implements  OnInit {
 
   constructor(private service: ProfileService) { }
-  profile : Profile  = {  id: 1, firstName: 'Ime', lastName: 'prezime', email: 'email', phoneNumber: 'brtel', address: 'adresa' } ;
+  profile : Profile  = {  id: 1, firstName: '', lastName: '', email: '', phone: '', address: '' } ;
   // constructor(private router: Router) {}
 
   ngOnInit(): void {

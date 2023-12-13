@@ -3,6 +3,6 @@ export interface Profile{
     firstName:string;
     lastName:string;
     email:string;
-    phoneNumber:string;
+    phone:string;
     address:string;
 }
