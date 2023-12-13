@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Profile } from '../model/profile.module';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -9,7 +10,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  // profile : Profile  = { firstName: 'sasas', lastName: '', email: '', phone: '', address: '' } ; // Prilagodite tip prema vašem objektu Profile
+
+
+
   profile: Profile;
   editUserForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -19,7 +22,7 @@ export class EditUserComponent implements OnInit {
     address: new FormControl('', Validators.required),
   });
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router, private service: ProfileService) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const profile = history.state.profile;
@@ -28,10 +31,33 @@ export class EditUserComponent implements OnInit {
         this.profile = profile;
         this.editUserForm.patchValue(this.profile);
       }
-    });
-  
-  
-  
-    
+    });   
+}
+
+onSave(): void {
+  if (this.editUserForm.valid) {
+    this.updateUserInfo();
+  }
+}
+
+updateUserInfo(): void {
+  const updatedProfile: Profile = {
+    firstName: this.editUserForm.value.firstName || '',
+    lastName: this.editUserForm.value.lastName || '',
+    email: this.editUserForm.value.email || '',
+    phone: this.editUserForm.value.phone || '',
+    address: this.editUserForm.value.address || '',
+  };
+  updatedProfile.id = 3;
+  this.service.updateUserInfo(updatedProfile).subscribe({
+    next: (_) => {
+      console.log('Update successful');
+      // Navigiraj nazad na user-info sa ažuriranim podacima
+      this.router.navigate(['/user-info'], { state: { profile: updatedProfile } });
+    },
+    error: (err) => {
+      console.error('Update failed', err);
+    }
+  });
 }
 }

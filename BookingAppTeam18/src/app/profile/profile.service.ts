@@ -13,4 +13,8 @@ export class ProfileService {
    getUserInfo() : Observable<Profile>{
     return this.http.get<Profile>('http://localhost:8080/api/users/3');
    }
+
+   updateUserInfo(profile: Profile) : Observable<Profile>{
+    return this.http.put<Profile>('http://localhost:8080/api/users/3', profile);
+   }
 }
