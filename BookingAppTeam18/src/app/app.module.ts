@@ -8,6 +8,10 @@ import {UserModule} from "./user/user.module";
 import { ProfileModule } from './profile/profile.module';
 import {AccommodationModule} from "./accommodation/accommodation.module";
 import {HttpClientModule} from "@angular/common/http";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import {HttpClientModule} from "@angular/common/http";
     UserModule,
     ProfileModule,
     AccommodationModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
