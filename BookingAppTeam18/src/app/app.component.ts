@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {AccommodationsComponent} from "./accommodation/accommodations/accommodations.component";
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'BookingApp';
-
+  @ViewChild('accommodationsComponent', { static: true }) accommodationsComponent: AccommodationsComponent;
 }

@@ -10,6 +10,8 @@ import {AccommodationModule} from "./accommodation/accommodation.module";
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+
 
 
 
@@ -29,8 +31,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
   providers: [
+    { provide: MatDialogRef, useValue: {} },
   ],
   bootstrap: [AppComponent]
 })

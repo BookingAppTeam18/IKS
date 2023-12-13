@@ -17,7 +17,8 @@ const routes: Routes = [
   {component: RegisterComponent, path:"register"},
   {component: UserInfoComponent, path:"user-info"},
   {component: EditUserComponent, path:"user-info/edit-user"},
-  {component: ChangePasswordComponent, path:"user-info/change-password"},
+  {component: ChangePasswordComponent, path:"user-info/change-password"}
+
 ];
 
 @NgModule({
