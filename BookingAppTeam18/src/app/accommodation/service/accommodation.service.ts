@@ -31,4 +31,8 @@ export class AccommodationService {
   getAccommodationDetails(id: number): Observable<AccommodationDetails> {
     return this.http.get<AccommodationDetails>(environment.apiHost +this.path+ '/details/' + id)
   }
+
+  getFilteredAccommodations(filter:string): Observable<Accommodation[]> {
+    return this.http.get<Accommodation[]>(environment.apiHost +this.path+ '/filter?' + filter)
+  }
 }

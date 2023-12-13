@@ -3,6 +3,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {AccommodationType} from "../accommodations/model/accommodationType";
 import {Benefit} from "../accommodations/model/benefit";
 import {FormControl, FormGroup} from "@angular/forms";
+import {start} from "@popperjs/core";
 
 const today = new Date();
 const month = today.getMonth();
@@ -109,8 +110,8 @@ export class FilterComponent {
     end: new FormControl(new Date(year, month, 13)),
   });
   accommodationType: AccommodationType;
-  selectedBenefits: BenefitIcon[];
-  benefits: Benefit[];
+  selectedBenefitIcons: BenefitIcon[];
+  selectedBenefits: Benefit[];
 
   constructor(
     public dialogRef: MatDialogRef<FilterComponent>) {
@@ -129,10 +130,14 @@ export class FilterComponent {
   }
 
   onFilterClick() {
-    this.selectedBenefits = this.benefitIcons.filter(icon => icon.isSelected);
-    const selectedBenefits: Benefit[] = this.selectedBenefits.map(icon => icon.benefit);
-
-
-
+    this.selectedBenefitIcons = this.selectedBenefitIcons.filter(icon => icon.isSelected);
+    this.selectedBenefits = this.selectedBenefitIcons.map(icon => icon.benefit);
+    console.log(this.minPrice);
+    console.log(this.maxPrice);
+    console.log(this.accommodationLocation);
+    console.log(this.minNumberOfGuests);
+    console.log(this.vacationLength.value.start);
+    console.log(this.vacationLength.value.end);
+    console.log(this.selectedBenefits);
   }
 }
