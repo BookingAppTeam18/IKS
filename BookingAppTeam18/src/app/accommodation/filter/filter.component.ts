@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {AccommodationType} from "../accommodations/model/accommodationType";
 import {Benefit} from "../accommodations/model/benefit";
 import {FormControl, FormGroup} from "@angular/forms";
 import {AccommodationService} from "../service/accommodation.service";
 import {Accommodation} from "../accommodations/model/accommodation";
-import {Observable} from "rxjs";
-import {AccommodationDetails} from "../details/model/accommodationDetails";
+import {Router} from "@angular/router";
+import {AccommodationsComponent} from "../accommodations/accommodations.component";
+import {SharedDataService} from "../service/shared-data.service";
 
 const today = new Date();
 const month = today.getMonth();
@@ -31,6 +32,10 @@ export class BenefitIcon{
   styleUrls: ['./filter.component.css'],
 })
 export class FilterComponent {
+
+  @Input() accommodationsComponent: AccommodationsComponent;
+
+
   benefitIcons: BenefitIcon[]=[
     new BenefitIcon(Benefit.WIFI,"wifi",1),
     new BenefitIcon(Benefit.FREE_PARKING,"local_parking",2),
@@ -50,56 +55,9 @@ export class FilterComponent {
     "House",
   ];
   locations: string[] = [
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    'Delaware',
-    'Florida',
-    'Georgia',
-    'Hawaii',
-    'Idaho',
-    'Illinois',
-    'Indiana',
-    'Iowa',
-    'Kansas',
-    'Kentucky',
-    'Louisiana',
-    'Maine',
-    'Maryland',
-    'Massachusetts',
-    'Michigan',
-    'Minnesota',
-    'Mississippi',
-    'Missouri',
-    'Montana',
-    'Nebraska',
-    'Nevada',
-    'New Hampshire',
-    'New Jersey',
-    'New Mexico',
-    'New York',
-    'North Carolina',
-    'North Dakota',
-    'Ohio',
-    'Oklahoma',
-    'Oregon',
-    'Pennsylvania',
-    'Rhode Island',
-    'South Carolina',
-    'South Dakota',
-    'Tennessee',
-    'Texas',
-    'Utah',
-    'Vermont',
-    'Virginia',
-    'Washington',
-    'West Virginia',
-    'Wisconsin',
-    'Wyoming',
+    'Backi jarak',
+    'Nakovo',
+    'Srpska Crnja'
   ];
 
 
@@ -114,11 +72,11 @@ export class FilterComponent {
   accommodationType: AccommodationType;
   selectedBenefitIcons: BenefitIcon[] = [];
   selectedBenefits: Benefit[];
-  private accommodations: Accommodation[];
-
   constructor(
     public dialogRef: MatDialogRef<FilterComponent>,
-  private accommodationService:AccommodationService) {
+    private accommodationService:AccommodationService,
+    private sharedDataService: SharedDataService
+  ) {
     this.minPrice = 0;
     this.maxPrice = 1000;
   }
@@ -171,10 +129,16 @@ export class FilterComponent {
     }
     httpString = httpString.slice(0,-1);
 
-      this.accommodationService.getFilteredAccommodations(httpString).subscribe({
-        next: (data: Accommodation[]) => { this.accommodations = data }
-      })
-      console.log(this.accommodations);
-      console.log(httpString);
+    this.accommodationService.getFilteredAccommodations(httpString).subscribe({
+      next: (data: Accommodation[]) => {
+        // Ažuriraj smeštaj u AccommodationsComponent
+        console.log(data);
+        console.log(httpString);
+        this.sharedDataService.updateAccommodations(data);
+
+        // Zatvori FilterComponent
+        this.dialogRef.close();
+      }
+    });
   }
 }

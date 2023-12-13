@@ -14,7 +14,7 @@ export class AccommodationService {
 
 
   getAll():Observable<Accommodation[]> {
-    return this.http.get<Accommodation[]>(this.path);
+    return this.http.get<Accommodation[]>(environment.apiHost+this.path);
   }
 
   get(id:number):Observable<Accommodation>{

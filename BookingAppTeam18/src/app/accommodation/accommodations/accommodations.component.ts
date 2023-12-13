@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
 import {Accommodation} from "./model/accommodation";
 import {AccommodationService } from "../service/accommodation.service";
+import {SharedDataService} from "../service/shared-data.service";
 
 @Component({
   selector: 'app-accommodations',
@@ -9,11 +9,29 @@ import {AccommodationService } from "../service/accommodation.service";
   styleUrls: ['./accommodations.component.css']
 })
 export class AccommodationsComponent implements OnInit{
-  accommodations: Observable<Accommodation[]>;
+  accommodations: Accommodation[];
 
-  constructor(private accommodationService:AccommodationService) {
+  constructor(private accommodationService:AccommodationService,
+              private sharedDataService: SharedDataService)
+  {
+    this.sharedDataService.currentAccommodations.subscribe(accommodations => {
+    // Ažuriraj smeštaj u AccommodationsComponent
+    this.updateAccommodations(accommodations);
+  });
   }
   ngOnInit() {
-    this.accommodations = this.accommodationService.getAll();
+    this.loadAccommodations();
+  }
+
+  loadAccommodations() {
+    this.accommodationService.getAll().subscribe({
+      next: (data: Accommodation[]) => {
+        this.accommodations = data;
+      }
+    });
+  }
+  updateAccommodations(newAccommodations: Accommodation[]) {
+    this.accommodations = newAccommodations;
+    // Dodajte dodatnu logiku po potrebi
   }
 }

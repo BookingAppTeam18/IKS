@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {FilterComponent} from "../../accommodation/filter/filter.component";
 import {AccommodationType} from "../../accommodation/accommodations/model/accommodationType";
 import {Benefit} from "../../accommodation/accommodations/model/benefit";
+import {SharedDataService} from "../../accommodation/service/shared-data.service";
 
 
 @Component({
@@ -13,11 +14,17 @@ import {Benefit} from "../../accommodation/accommodations/model/benefit";
 export class NavBarGuestComponent {
   value: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+  private sharedDataService: SharedDataService
+) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FilterComponent, {
     });
 
+  }
+
+  onSearchEnter() {
+    this.sharedDataService.Search(this.value);
   }
 }

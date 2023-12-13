@@ -3,7 +3,7 @@ import { Benefit } from './benefit';
 
 
 export interface Accommodation {
-  _id?:number;
+  id:number;
   ownerId:number;
   name:string;
   longitude:number;
@@ -14,5 +14,7 @@ export interface Accommodation {
   gallery:string[];
   benefits:Benefit[];
   accommodationType:AccommodationType;//enum
+  rating:number;
+  nextPrice:number;
 
 }
