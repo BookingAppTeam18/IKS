@@ -12,6 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
+import { CreateAccommodationpt2Component } from './create accommodation/create-accommodationpt2/create-accommodationpt2.component';
 
 
 
@@ -21,7 +22,8 @@ import {MatIconModule} from "@angular/material/icon";
     DetailsComponent,
     CreateAccommodationInfoComponent,
     CreateAccommodationMapComponent,
-    CreateAccommodationPricesComponent
+    CreateAccommodationPricesComponent,
+    CreateAccommodationpt2Component
   ],
     imports: [
         CommonModule,
@@ -35,12 +37,13 @@ import {MatIconModule} from "@angular/material/icon";
   providers:[
     AccommodationsService,
   ],
-    exports: [
-        AccommodationsComponent,
-        DetailsComponent,
-        CreateAccommodationInfoComponent,
-        CreateAccommodationMapComponent,
-        CreateAccommodationPricesComponent
-    ]
+  exports: [
+    AccommodationsComponent,
+    DetailsComponent,
+    CreateAccommodationInfoComponent,
+    CreateAccommodationMapComponent,
+    CreateAccommodationPricesComponent,
+    CreateAccommodationpt2Component
+  ]
 })
 export class AccommodationModule { }
