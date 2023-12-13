@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, } from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG,} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {LayoutModule} from "./layout/layout.module";
@@ -10,6 +10,7 @@ import {AccommodationModule} from "./accommodation/accommodation.module";
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -26,11 +27,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     ProfileModule,
     AccommodationModule,
     HttpClientModule,
-    BrowserModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
