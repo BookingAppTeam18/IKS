@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 import {AccommodationService} from "../service/accommodation.service";
 import {AccommodationDetails} from "./model/accommodationDetails";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-details',
@@ -11,8 +11,9 @@ import {AccommodationDetails} from "./model/accommodationDetails";
 export class DetailsComponent {
   accommodationDetailsDTO: AccommodationDetails;
 
-  constructor(private route: ActivatedRoute, private accommodationService: AccommodationService) {
+  constructor(private route: ActivatedRoute, private router: Router, private accommodationService: AccommodationService) {
   }
+  
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -21,5 +22,9 @@ export class DetailsComponent {
         next: (data: AccommodationDetails) => { this.accommodationDetailsDTO = data }
       })
     })
+  }
+  navigateToEditAccommodation(): void {
+    console.log("navigateToEditAccommodation");
+    this.router.navigate(['/details/edit-accommodation']);
   }
 }
