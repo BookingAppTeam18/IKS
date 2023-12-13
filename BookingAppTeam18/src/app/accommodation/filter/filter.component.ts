@@ -3,6 +3,10 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {AccommodationType} from "../accommodations/model/accommodationType";
 import {Benefit} from "../accommodations/model/benefit";
 import {FormControl, FormGroup} from "@angular/forms";
+import {AccommodationService} from "../service/accommodation.service";
+import {Accommodation} from "../accommodations/model/accommodation";
+import {Observable} from "rxjs";
+import {AccommodationDetails} from "../details/model/accommodationDetails";
 
 const today = new Date();
 const month = today.getMonth();
@@ -99,7 +103,6 @@ export class FilterComponent {
   ];
 
 
-
   minPrice: number;
   maxPrice: number;
   accommodationLocation: string;
@@ -111,9 +114,11 @@ export class FilterComponent {
   accommodationType: AccommodationType;
   selectedBenefitIcons: BenefitIcon[] = [];
   selectedBenefits: Benefit[];
+  private accommodations: Accommodation[];
 
   constructor(
-    public dialogRef: MatDialogRef<FilterComponent>) {
+    public dialogRef: MatDialogRef<FilterComponent>,
+  private accommodationService:AccommodationService) {
     this.minPrice = 0;
     this.maxPrice = 1000;
   }
@@ -141,18 +146,23 @@ export class FilterComponent {
     this.selectedBenefits = this.selectedBenefitIcons.map(icon => icon.benefit);
     let httpString:string = "";
     if(this.accommodationLocation != undefined){
-      httpString += "type=" + this.accommodationType.toUpperCase() + "&";
+      httpString += "location=" + this.accommodationLocation + "&";
     }
-    httpString +="minPrice"+this.minPrice+"&";
-    httpString +="maxPrice"+this.maxPrice+"&";
+    if(this.accommodationType != undefined){
+      httpString += "type=" + this.accommodationType.toString().toUpperCase() + "&";
+    }
+    httpString +="minPrice="+this.minPrice+"&";
+    httpString +="maxPrice="+this.maxPrice+"&";
     if(this.minNumberOfGuests != undefined)
       httpString +="minNumberOfGuests"+this.minNumberOfGuests+"&";
-    if(this.vacationLength.value.start?.getDate() != this.vacationLength.value.end?.getDate()){
-      httpString +="start"+this.vacationLength.value.start?.getFullYear()+"-"+this.vacationLength.value.start?.getMonth()+"-"+this.vacationLength.value.start?.getDate()+"&";
-      httpString +="start"+this.vacationLength.value.end?.getFullYear()+"-"+this.vacationLength.value.end?.getMonth()+"-"+this.vacationLength.value.end?.getDate()+"&";
-    }
+    if(this.vacationLength.value.start != null && this.vacationLength.value.end != null)
+      if(this.vacationLength.value.start.getDate() != this.vacationLength.value.end.getDate()){
+        httpString +="start="+this.vacationLength.value.start?.getFullYear()+"-"+(this.vacationLength.value.start.getMonth()+1)+"-"+this.vacationLength.value.start?.getDate()+"&";
+        httpString +="end="+this.vacationLength.value.end?.getFullYear()+"-"+(this.vacationLength.value.end.getMonth()+1)+"-"+this.vacationLength.value.end?.getDate()+"&";
+      }
     const benefitStrings = this.selectedBenefits.map(benefit => Benefit[benefit]);
     if(benefitStrings.length != 0){
+      httpString += "benefits="
       for(const benefit of benefitStrings){
           httpString += benefit+",";
       }
@@ -160,6 +170,11 @@ export class FilterComponent {
       httpString += "&";
     }
     httpString = httpString.slice(0,-1);
-    console.log(httpString);
+
+      this.accommodationService.getFilteredAccommodations(httpString).subscribe({
+        next: (data: Accommodation[]) => { this.accommodations = data }
+      })
+      console.log(this.accommodations);
+      console.log(httpString);
   }
 }
