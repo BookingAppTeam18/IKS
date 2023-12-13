@@ -1,5 +1,5 @@
 export enum AccommodationType{
-  ROOM,
+  ROOM = 1,
   APARTMENT,
   STUDIO,
   HOTEL,
