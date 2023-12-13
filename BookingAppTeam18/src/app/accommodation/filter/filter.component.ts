@@ -3,7 +3,6 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {AccommodationType} from "../accommodations/model/accommodationType";
 import {Benefit} from "../accommodations/model/benefit";
 import {FormControl, FormGroup} from "@angular/forms";
-import {start} from "@popperjs/core";
 
 const today = new Date();
 const month = today.getMonth();
@@ -110,15 +109,13 @@ export class FilterComponent {
     end: new FormControl(new Date(year, month, 13)),
   });
   accommodationType: AccommodationType;
-  selectedBenefitIcons: BenefitIcon[];
+  selectedBenefitIcons: BenefitIcon[] = [];
   selectedBenefits: Benefit[];
 
   constructor(
     public dialogRef: MatDialogRef<FilterComponent>) {
     this.minPrice = 0;
     this.maxPrice = 1000;
-    this.benefitIcons.push(
-    );
   }
 
   onNoClick(): void {
@@ -127,17 +124,42 @@ export class FilterComponent {
   onIconClick(benefitIcon: BenefitIcon): void {
     // Toggle isSelected za trenutno kliknutu ikonicu
     benefitIcon.isSelected = !benefitIcon.isSelected;
+    if(benefitIcon.isSelected){
+      this.selectedBenefitIcons.push(benefitIcon);
+    }else {
+      // Ako ikona više nije selektovana, ukloni je iz selectedBenefitIcons
+      const index = this.selectedBenefitIcons.findIndex(icon => icon.id === benefitIcon.id);
+
+      if (index !== -1) {
+        this.selectedBenefitIcons.splice(index, 1);
+      }
+    }
   }
 
   onFilterClick() {
     this.selectedBenefitIcons = this.selectedBenefitIcons.filter(icon => icon.isSelected);
     this.selectedBenefits = this.selectedBenefitIcons.map(icon => icon.benefit);
-    console.log(this.minPrice);
-    console.log(this.maxPrice);
-    console.log(this.accommodationLocation);
-    console.log(this.minNumberOfGuests);
-    console.log(this.vacationLength.value.start);
-    console.log(this.vacationLength.value.end);
-    console.log(this.selectedBenefits);
+    let httpString:string = "";
+    if(this.accommodationLocation != undefined){
+      httpString += "type=" + this.accommodationType.toUpperCase() + "&";
+    }
+    httpString +="minPrice"+this.minPrice+"&";
+    httpString +="maxPrice"+this.maxPrice+"&";
+    if(this.minNumberOfGuests != undefined)
+      httpString +="minNumberOfGuests"+this.minNumberOfGuests+"&";
+    if(this.vacationLength.value.start?.getDate() != this.vacationLength.value.end?.getDate()){
+      httpString +="start"+this.vacationLength.value.start?.getFullYear()+"-"+this.vacationLength.value.start?.getMonth()+"-"+this.vacationLength.value.start?.getDate()+"&";
+      httpString +="start"+this.vacationLength.value.end?.getFullYear()+"-"+this.vacationLength.value.end?.getMonth()+"-"+this.vacationLength.value.end?.getDate()+"&";
+    }
+    const benefitStrings = this.selectedBenefits.map(benefit => Benefit[benefit]);
+    if(benefitStrings.length != 0){
+      for(const benefit of benefitStrings){
+          httpString += benefit+",";
+      }
+      httpString = httpString.slice(0,-1);
+      httpString += "&";
+    }
+    httpString = httpString.slice(0,-1);
+    console.log(httpString);
   }
 }
