@@ -1,21 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from '../model/profile.module';
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.css']
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements  OnInit {
 
+  constructor(private service: ProfileService) { }
   profile : Profile  = {  id: 1, firstName: 'Ime', lastName: 'prezime', email: 'email', phoneNumber: 'brtel', address: 'adresa' } ;
-  constructor(private router: Router) {}
+  // constructor(private router: Router) {}
 
-  navigateToEditUser(): void {
-    this.router.navigate(['/user-info/edit-user']);
+  ngOnInit(): void {
+    this.service.getUserInfo().subscribe({next: (data: Profile) => {
+      console.log(data);
+      this.profile = data;
+    },
+    error: (error) => {
+      console.log(error);
+    }});
   }
-  navigateToChangePassword(): void {
-    this.router.navigate(['/user-info/change-password']);
-  }
+
+  // navigateToEditUser(): void {
+  //   this.router.navigate(['/user-info/edit-user']);
+  // }
+  // navigateToChangePassword(): void {
+  //   this.router.navigate(['/user-info/change-password']);
+  // }
 }
