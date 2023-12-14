@@ -1,18 +1,18 @@
-<form [formGroup]="createAccommodationForm">
+<form [formGroup]="createAccommodationForm" (ngSubmit)="create()">
   <div class="info">
     <label>Informations about apartment*</label>
-    <input type="text" placeholder="Name">
-    <input type="number" placeholder="Min number of guests">
-    <input type="number" placeholder="Max number of guests">
+    <input type="text" placeholder="Name" formControlName="name">
+    <input type="number" placeholder="Min number of guests" formControlName="minGuests">
+    <input type="number" placeholder="Max number of guests" formControlName="maxGuests">
     <div class="custom-select" style="width:200px;">
-      <select>
+      <select formControlName="type">
         <option value="0">Type</option>
         <option value="1">Room</option>
         <option value="2">Hotel</option>
       </select>
     </div>
     <div class="custom-select" style="width:200px;">
-      <select>
+      <select formControlName="benefits">
         <option value="0">Benefits</option>
         <option value="1">WiFi</option>
         <option value="2">Kitchen</option>
@@ -27,7 +27,7 @@
     <button><mat-icon>cloud_upload</mat-icon></button>
   </div>
   <div class="arrow">
-    <button (click)="create()"><img alt="strelica" src="../../assets/images/shape.png"></button>
+    <button (click)="create()" type="submit"><img alt="strelica" src="../../assets/images/shape.png"></button>
   </div>
 </form>
 

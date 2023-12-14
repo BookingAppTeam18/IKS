@@ -32,7 +32,7 @@ export class CreateAccommodationInfoComponent {
         minNumGuest: this.createAccommodationForm.value.minGuests,
         maxNumGuest: this.createAccommodationForm.value.maxGuests,
         accommodationType: this.createAccommodationForm.value.type,
-        benefits: this.createAccommodationForm.value.benefits,
+        benefits: [],
         owner: 1,
         longitude: 5,
         latitude: 7,
