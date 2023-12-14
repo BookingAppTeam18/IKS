@@ -14,4 +14,8 @@ export class AccommodationsService {
   getAccommodations():Observable<Accommodation[]> {
     return this.http.get<Accommodation[]>(this.path);
   }
+
+  add(accommodation: Accommodation): Observable<Accommodation> {
+    return this.http.post<Accommodation>("http://localhost:8080/api/accommodations", accommodation)
+  }
 }

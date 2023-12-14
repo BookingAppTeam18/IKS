@@ -13,6 +13,7 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
 import { CreateAccommodationpt2Component } from './create accommodation/create-accommodationpt2/create-accommodationpt2.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -25,15 +26,16 @@ import { CreateAccommodationpt2Component } from './create accommodation/create-a
     CreateAccommodationPricesComponent,
     CreateAccommodationpt2Component
   ],
-    imports: [
-        CommonModule,
-        RouterLink,
-        ProfileModule,
-        MatInputModule,
-        MatOptionModule,
-        MatSelectModule,
-        MatIconModule
-    ],
+  imports: [
+    CommonModule,
+    RouterLink,
+    ProfileModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    ReactiveFormsModule
+  ],
   providers:[
     AccommodationsService,
   ],
