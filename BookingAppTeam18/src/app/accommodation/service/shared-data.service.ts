@@ -7,34 +7,22 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class SharedDataService {
-  private accommodationsData = new BehaviorSubject<Accommodation[]>([]);
-  currentAccommodations = this.accommodationsData.asObservable();
+  private filter = new BehaviorSubject<string>("");
+  private search = new BehaviorSubject<string>("");
+  currentFilter = this.filter.asObservable();
+  currentSearch = this.search.asObservable();
 
   constructor(private accommodationService:AccommodationService) { }
 
-  updateAccommodations(data: Accommodation[]) {
-    this.accommodationsData.next(data);
+  updateFilter(data: string) {
+    this.filter.next(data);
+  }
+  updateSearch(data: string) {
+    this.search.next(data);
   }
 
   Search(value: string) {
-    if(value === ""){
-      this.loadAccommodations();
-    }
-
-    const currentAccommodations = this.accommodationsData.value;
-
-    const filteredAccommodations = currentAccommodations.filter(accommodation =>
-      accommodation.name.toLowerCase().includes(value.toLowerCase())
-    );
-
-    this.updateAccommodations(filteredAccommodations);
+    this.updateSearch(value);
   }
 
-  loadAccommodations() {
-    this.accommodationService.getAll().subscribe({
-      next: (data: Accommodation[]) => {
-        this.updateAccommodations(data);
-      }
-    });
-  }
 }
