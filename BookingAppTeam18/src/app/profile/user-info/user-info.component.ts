@@ -11,7 +11,7 @@ import { ProfileService } from '../profile.service';
 export class UserInfoComponent implements  OnInit {
 
   constructor(private service: ProfileService, private router: Router) { }
-  profile : Profile  = { firstName: '', lastName: '', email: '', phone: '', address: '' } ;
+  profile : Profile;
   
   // constructor(private router: Router) {}
 

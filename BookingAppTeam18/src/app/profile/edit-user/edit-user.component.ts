@@ -47,6 +47,8 @@ updateUserInfo(): void {
     email: this.editUserForm.value.email || '',
     phone: this.editUserForm.value.phone || '',
     address: this.editUserForm.value.address || '',
+    password: this.profile.password,
+    userType: this.profile.userType
   };
   updatedProfile.id = 3;
   this.service.updateUserInfo(updatedProfile).subscribe({
