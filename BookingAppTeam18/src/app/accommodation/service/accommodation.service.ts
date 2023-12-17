@@ -9,7 +9,7 @@ import {AccommodationDetails} from "../details/model/accommodationDetails";
 @Injectable()
 export class AccommodationService {
 
-  private readonly path = "/api/accommodations";
+  private readonly path = "api/accommodations";
   constructor(private http: HttpClient) { }
 
 
