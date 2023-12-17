@@ -44,4 +44,13 @@ export class UserInfoComponent implements  OnInit {
     };
     this.router.navigate(['/user-info/change-password'], navigationExtras);
   }
+
+  deleteAccount(profile: Profile): void {
+    this.service.deleteUser(profile).subscribe({
+      next: (profile2 : Profile) => {
+        console.log('Delete successful');
+        this.router.navigate(['/log-in']);
+      }
+    });
+  }
 }

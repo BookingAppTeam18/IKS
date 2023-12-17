@@ -1,7 +1,12 @@
 <body>
   <div *ngIf="profile">
-    <div id = "profile_picture_frame">
-        <img src="" alt="PROFILNA SLIKA" id="profile_picture">
+    <div id="picture-delete">
+        <div id = "profile_picture_frame">
+            <img src="" alt="PROFILNA SLIKA" id="profile_picture">
+        </div>
+        <div id="delete-button-div">
+            <input type="button" class="edit_user_info_button" value="Delete account" (click)="deleteAccount(profile)">
+        </div>
     </div>
     <div class="info_frame">
         <div id="user_info_text">
