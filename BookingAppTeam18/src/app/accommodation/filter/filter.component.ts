@@ -1,11 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {AccommodationType} from "../accommodations/model/accommodationType";
 import {Benefit} from "../accommodations/model/benefit";
 import {FormControl, FormGroup} from "@angular/forms";
 import {AccommodationService} from "../service/accommodation.service";
-import {Accommodation} from "../accommodations/model/accommodation";
-import {Router} from "@angular/router";
 import {AccommodationsComponent} from "../accommodations/accommodations.component";
 import {SharedDataService} from "../service/shared-data.service";
 
@@ -129,16 +127,7 @@ export class FilterComponent {
     }
     httpString = httpString.slice(0,-1);
 
-    this.accommodationService.getFilteredAccommodations(httpString).subscribe({
-      next: (data: Accommodation[]) => {
-        // Ažuriraj smeštaj u AccommodationsComponent
-        console.log(data);
-        console.log(httpString);
-        this.sharedDataService.updateAccommodations(data);
+    this.sharedDataService.updateFilter(httpString);
 
-        // Zatvori FilterComponent
-        this.dialogRef.close();
-      }
-    });
   }
 }
