@@ -37,6 +37,11 @@ export class UserInfoComponent implements  OnInit {
   }
   
   navigateToChangePassword(): void {
-    this.router.navigate(['/user-info/change-password']);
+    const navigationExtras: NavigationExtras = {
+      state: {
+        profile: this.profile
+      }
+    };
+    this.router.navigate(['/user-info/change-password'], navigationExtras);
   }
 }
