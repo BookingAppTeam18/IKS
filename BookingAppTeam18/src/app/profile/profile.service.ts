@@ -11,11 +11,11 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
    getUserInfo() : Observable<Profile>{
-    return this.http.get<Profile>('http://localhost:8080/api/users/3');
+    return this.http.get<Profile>('http://localhost:8080/api/users/2');
    }
 
    updateUserInfo(profile: Profile) : Observable<Profile>{
-    return this.http.put<Profile>('http://localhost:8080/api/users/3', profile);
+    return this.http.put<Profile>('http://localhost:8080/api/users/'+profile.id, profile);
    }
    deleteUser(profile: Profile) : Observable<Profile>{
     return this.http.delete<Profile>('http://localhost:8080/api/users/'+profile.id);

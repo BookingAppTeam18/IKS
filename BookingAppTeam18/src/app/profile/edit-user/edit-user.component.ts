@@ -48,9 +48,9 @@ updateUserInfo(): void {
     phone: this.editUserForm.value.phone || '',
     address: this.editUserForm.value.address || '',
     password: this.profile.password,
-    userType: this.profile.userType
+    userType: this.profile.userType,
+    id: this.profile.id
   };
-  updatedProfile.id = 3;
   this.service.updateUserInfo(updatedProfile).subscribe({
     next: (_) => {
       console.log('Update successful');
