@@ -12,6 +12,7 @@ import {
 import {
   CreateAccommodationComponent
 } from "./accommodation/create accommodation/create-accommodation/create-accommodation.component";
+import {CreatePricesComponent} from "./accommodation/prices/create-prices/create-prices.component";
 
 const routes: Routes = [
   {component: HomeComponent, path:"home"},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {component: RegisterComponent, path:"register"},
   {component: UserInfoComponent, path:"user-info"},
   {component: CreateAccommodationComponent, path:"create-accommodation"},
-  {component: CreateAccommodationMapComponent, path:"create-map"}
+  {component: CreateAccommodationMapComponent, path:"create-map"},
+  {component: CreatePricesComponent, path:"create-prices"}
 ];
 
 @NgModule({

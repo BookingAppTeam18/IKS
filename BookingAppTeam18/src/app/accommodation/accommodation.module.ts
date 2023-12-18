@@ -14,6 +14,7 @@ import { CreateAccommodationComponent } from './create accommodation/create-acco
 import { CreateAccommodationMapComponent } from './create accommodation/create-accommodation-map/create-accommodation-map.component';
 import {LayoutModule} from "../layout/layout.module";
 import { CreatePricesComponent } from './prices/create-prices/create-prices.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 
@@ -25,18 +26,19 @@ import { CreatePricesComponent } from './prices/create-prices/create-prices.comp
     CreateAccommodationMapComponent,
     CreatePricesComponent
   ],
-    imports: [
-        CommonModule,
-        RouterLink,
-        ProfileModule,
-        MatInputModule,
-        MatOptionModule,
-        MatSelectModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        LayoutModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    RouterLink,
+    ProfileModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    FormsModule,
+    MatDatepickerModule
+  ],
   providers:[
     AccommodationsService,
   ],
