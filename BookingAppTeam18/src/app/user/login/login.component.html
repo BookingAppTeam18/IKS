@@ -6,6 +6,7 @@
 <body>
 <div class="shadow">
   <div class="login-form">
+
     <img src="../../assets/images/logo.png" height="61" width="98" alt="logo" class="logo-image"/>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!submitted" [formGroup]="form">
       <div class="form-group">
@@ -16,6 +17,7 @@
         <i class="fa fa-key icon"></i>
         <input formControlName="password" id="password" name="password" required placeholder="Password" type="password">
       </div>
+      <p *ngIf="notification" [class]="notification.msgType">{{notification.msgBody}}</p>
       <button [disabled]="!loginForm.form.valid"  color="primary" mat-raised-button
               type="submit">Login</button>
       <label>Forgot password?</label>

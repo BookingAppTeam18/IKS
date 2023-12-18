@@ -6,6 +6,8 @@ import {map} from "rxjs";
 import {AccountService} from "./account.service";
 import {ConfigService} from "./config.service";
 import {FormGroup} from "@angular/forms";
+import {anonymus, Profile} from "../../profile/model/profile.module";
+import {UserType} from "../../profile/model/userType";
 
 
 export interface LoginUser {
@@ -58,7 +60,7 @@ export class AuthService {
   }
 
   logout() {
-    this.userService.currentUser = null;
+    this.userService.currentUser = anonymus;
     localStorage.removeItem("jwt");
     this.access_token = null;
     this.router.navigate(['']);

@@ -10,3 +10,12 @@ export interface Profile{
     address:string;
     userType: UserType;
 }
+export const anonymus: Profile = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  phone: '',
+  address: '',
+  userType: UserType.ANONYMUS
+};

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {ApiService} from "./api.service";
 import {map} from "rxjs";
 import {ConfigService} from "./config.service";
+import {anonymus, Profile} from "../../profile/model/profile.module";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  currentUser!:any;
+  currentUser:Profile = anonymus;
 
   constructor(
     private apiService: ApiService,

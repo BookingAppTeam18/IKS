@@ -1,5 +1,6 @@
 export enum UserType{
     ADMIN,
-    HOST,
-    GUEST
+    OWNER,
+    GUEST,
+    ANONYMUS
 }
