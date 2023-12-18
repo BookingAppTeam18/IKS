@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CreateAccommodationComponent } from './create accommodation/create-accommodation/create-accommodation.component';
 import { CreateAccommodationMapComponent } from './create accommodation/create-accommodation-map/create-accommodation-map.component';
 import {LayoutModule} from "../layout/layout.module";
+import { CreatePricesComponent } from './prices/create-prices/create-prices.component';
 
 
 
@@ -21,7 +22,8 @@ import {LayoutModule} from "../layout/layout.module";
     AccommodationsComponent,
     DetailsComponent,
     CreateAccommodationComponent,
-    CreateAccommodationMapComponent
+    CreateAccommodationMapComponent,
+    CreatePricesComponent
   ],
     imports: [
         CommonModule,
@@ -42,7 +44,8 @@ import {LayoutModule} from "../layout/layout.module";
         AccommodationsComponent,
         DetailsComponent,
         CreateAccommodationComponent,
-        CreateAccommodationMapComponent
+        CreateAccommodationMapComponent,
+        CreatePricesComponent
     ]
 })
 export class AccommodationModule { }

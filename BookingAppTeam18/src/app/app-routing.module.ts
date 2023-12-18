@@ -9,6 +9,9 @@ import {UserInfoComponent} from "./profile/user-info/user-info.component";
 import {
   CreateAccommodationMapComponent
 } from "./accommodation/create accommodation/create-accommodation-map/create-accommodation-map.component";
+import {
+  CreateAccommodationComponent
+} from "./accommodation/create accommodation/create-accommodation/create-accommodation.component";
 
 const routes: Routes = [
   {component: HomeComponent, path:"home"},
@@ -17,6 +20,7 @@ const routes: Routes = [
   {component: LoginComponent, path:"log-in"},
   {component: RegisterComponent, path:"register"},
   {component: UserInfoComponent, path:"user-info"},
+  {component: CreateAccommodationComponent, path:"create-accommodation"},
   {component: CreateAccommodationMapComponent, path:"create-map"}
 ];
 
