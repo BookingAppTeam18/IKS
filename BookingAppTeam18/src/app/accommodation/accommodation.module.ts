@@ -15,6 +15,8 @@ import { CreateAccommodationMapComponent } from './create accommodation/create-a
 import {LayoutModule} from "../layout/layout.module";
 import { CreatePricesComponent } from './prices/create-prices/create-prices.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -37,7 +39,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ReactiveFormsModule,
     LayoutModule,
     FormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatRadioModule,
+    MatTableModule
   ],
   providers:[
     AccommodationsService,
