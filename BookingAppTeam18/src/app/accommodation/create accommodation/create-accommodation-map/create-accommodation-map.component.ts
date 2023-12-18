@@ -1,69 +1,94 @@
-import {AfterViewInit, Component} from '@angular/core';
-import * as L from 'leaflet';
-import {CreateAccommodationMapService} from "../create-accommodation-map.service";
+import { Component } from '@angular/core';
+import {MapService} from "../../../layout/services/map-service.service";
+import {Accommodation} from "../../model/accommodation";
+import {AccommodationsService} from "../../services/accommodations.service";
+import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+declare var L: any;
 
 @Component({
   selector: 'app-create-accommodation-map',
   templateUrl: './create-accommodation-map.component.html',
   styleUrls: ['./create-accommodation-map.component.css']
 })
-export class CreateAccommodationMapComponent implements AfterViewInit{
-  private map: any;
+export class CreateAccommodationMapComponent {
 
-  constructor(private mapService: CreateAccommodationMapService) {}
+  accommodation: Accommodation | null;
+  address: string = '';
+  map: any;
+  longi: number;
+  lati: number;
 
-  private initMap(): void {
-    this.map = L.map('map', {
-      center: [45.2396, 19.8227],
-      zoom: 13,
-    });
+  constructor(private http: HttpClient, private mapService: MapService, private accommodationService: AccommodationsService, private router: Router) {}
 
-    const tiles = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 18,
-        minZoom: 3,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }
+  ngOnInit() {
+    this.accommodation = this.accommodationService.getAccommodation();
+    if (!this.accommodation) {
+      console.error('Nema dostupnih podataka o smeštaju.');
+      // Možete implementirati logiku ako smeštaj nije pronađen
+    }
+    this.initializeMap();
+  }
+
+  initializeMap() {
+    this.map = L.map('map').setView([45.2396, 19.8227], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(this.map);
+  }
+
+  searchAddress() {
+
+
+    this.mapService.search(this.address).subscribe(
+        (data: any) => {
+          if (data && data.length > 0) {
+            const lat = parseFloat(data[0].lat);
+            const lon = parseFloat(data[0].lon);
+            this.map.setView([lat, lon], 13);
+            L.marker([lat, lon]).addTo(this.map);
+
+            const nominatimAPIUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+
+            // Koristite Angular HTTP ili HttpClient modul da napravite GET zahtev ka Nominatim API-ju
+            this.http.get(nominatimAPIUrl).subscribe(
+                (data: any) => {
+                  // Podaci će sadržavati informacije o adresi, gradu i državi na osnovu date latitude i longitude
+                  const cityName = data.address.city; // Pretpostavljajući da Nominatim pruža informacije o gradu kao "city"
+                  console.log('Grad:', cityName);
+                  if (this.accommodation) {
+                    this.accommodation.latitude = lat;
+                    this.accommodation.longitude = lon;
+                    this.accommodation.location = cityName;
+
+                  }
+                },
+                (error) => {
+                  console.error('Greška prilikom dobijanja imena grada:', error);
+                }
+            );
+
+          } else {
+            console.log('Adresa nije pronađena.');
+          }
+        },
+        (error) => {
+          console.error('Greška prilikom pretrage adrese:', error);
+        }
     );
-    tiles.addTo(this.map);
-    this.registerOnClick()
-    this.search()
   }
 
-  registerOnClick(): void {
-    this.map.on('click', (e: any) => {
-      const coord = e.latlng;
-      const lat = coord.lat;
-      const lng = coord.lng;
-      this.mapService.reverseSearch(lat, lng).subscribe((res) => {
-        console.log(res.display_name);
+  create(){
+    if (this.accommodation) {
+      this.accommodationService.add(this.accommodation).subscribe({
+        next: (data: Accommodation) => {
+          this.router.navigate(['accommodation']);
+        }
       });
-      console.log(
-        'You clicked the map at latitude: ' + lat + ' and longitude: ' + lng
-      );
-      new L.Marker([lat, lng]).addTo(this.map);
-    });
+    } else {
+      console.error('Accommodation podaci nedostaju.');
+    }
   }
 
-  search(): void {
-    this.mapService.search('Strazilovska 19, Novi Sad').subscribe({
-      next: (result) => {
-        console.log(result);
-        L.marker([result[0].lat, result[0].lon])
-          .addTo(this.map)
-          .bindPopup('Pozdrav iz Strazilovske 19.')
-          .openPopup();
-      },
-      error: () => {},
-    });
-  }
-
-  ngAfterViewInit(): void {
-    L.Marker.prototype.options.icon = L.icon({
-      iconUrl: 'https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png',
-    });
-    this.initMap();
-  }
 }

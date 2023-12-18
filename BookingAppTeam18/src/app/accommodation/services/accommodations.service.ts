@@ -8,6 +8,8 @@ import {Observable} from "rxjs";
 })
 export class AccommodationsService {
 
+  private accommodation: Accommodation | null = null;
+
   private readonly path ="http://localhost:8080/api/accommodations";
   constructor(private http: HttpClient) { }
 
@@ -17,5 +19,13 @@ export class AccommodationsService {
 
   add(accommodation: Accommodation): Observable<Accommodation> {
     return this.http.post<Accommodation>("http://localhost:8080/api/accommodations", accommodation)
+  }
+
+  getAccommodation(): Accommodation | null {
+    return this.accommodation;
+  }
+
+  setAccommodation(accommodation: Accommodation): void {
+    this.accommodation = accommodation;
   }
 }

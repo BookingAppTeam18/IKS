@@ -6,6 +6,9 @@ import {DetailsComponent} from "./accommodation/details/details.component";
 import {LoginComponent} from "./user/login/login.component";
 import {RegisterComponent} from "./user/register/register.component";
 import {UserInfoComponent} from "./profile/user-info/user-info.component";
+import {
+  CreateAccommodationMapComponent
+} from "./accommodation/create accommodation/create-accommodation-map/create-accommodation-map.component";
 
 const routes: Routes = [
   {component: HomeComponent, path:"home"},
@@ -13,7 +16,8 @@ const routes: Routes = [
   {component: DetailsComponent, path:"details"},
   {component: LoginComponent, path:"log-in"},
   {component: RegisterComponent, path:"register"},
-  {component: UserInfoComponent, path:"user-info"}
+  {component: UserInfoComponent, path:"user-info"},
+  {component: CreateAccommodationMapComponent, path:"create-map"}
 ];
 
 @NgModule({

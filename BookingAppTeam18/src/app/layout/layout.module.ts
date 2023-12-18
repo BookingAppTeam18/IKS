@@ -10,6 +10,7 @@ import { NavBarOwnerComponent } from './nav-bar-owner/nav-bar-owner.component';
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
+import { MapComponent } from './map/map/map.component';
 
 
 
@@ -20,14 +21,16 @@ import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
     NavBarGuestComponent,
     NavBarUserComponent,
     NavBarOwnerComponent,
-    NavBarAdminComponent
+    NavBarAdminComponent,
+    MapComponent
   ],
   exports: [
     HeaderComponent,
     NavBarGuestComponent,
     NavBarUserComponent,
     NavBarOwnerComponent,
-    NavBarAdminComponent
+    NavBarAdminComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,
