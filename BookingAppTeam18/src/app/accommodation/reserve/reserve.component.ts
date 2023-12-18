@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
+import { ReservationService } from '../service/reservation.service';
 
 
 
@@ -17,8 +18,9 @@ export class ReserveComponent {
   startMinDate: Date;
   startMaxDate: Date ;
   endMinDate: Date;
-  numberOfGuests: Number;
+  numberOfGuests: number;
   disabledDates: Date[] = [];
+  
 
   myHolidayDates = [
     new Date("12/1/2023"),
@@ -38,8 +40,7 @@ export class ReserveComponent {
     const time=d.getTime();
     return !this.myHolidayDates.find(x=>x.getTime()==time);
   }
-
-  constructor() {
+  constructor(private reservationService: ReservationService) {
 
     this.start =new Date();
     this.start.setDate(this.start.getDate() +1);
@@ -59,6 +60,40 @@ export class ReserveComponent {
     this.updateEndMinDate();
     // this.endMinDate.setDate(this.startMinDate.getDate()+1);
   }
+  
+
+  reserve() {
+    // Implementacija vaše postojeće rezervacije
+    console.log("poziva");
+    // Dodajte provjeru za praznike prije slanja zahtjeva
+  if (this.start instanceof Date && this.end instanceof Date && this.hasHolidayBetweenDates(this.start, this.end)) {
+    // Ako ima praznika, možete obavijestiti korisnika ili dodati odgovarajuću logiku
+    console.log("Između start i end datuma postoje praznici. Rezervacija nije moguća.");
+    return;  // Prekini izvođenje funkcije jer rezervacija nije moguća zbog praznika
+  }
+    const reservationData = {
+      startDate: this.start || new Date(),
+      endDate: this.end || new Date(),
+      // numberOfGuests: this.numberOfGuests || 1,
+      price: 0, // Add the price property with a default value
+      accommodationId: 3, // Add the accommodationId property with a default value
+      accountId: 2 // Add the accountId property with a default value
+    };
+    console.log(reservationData);
+
+    this.reservationService.createReservation(reservationData).subscribe(
+      (response: any) => {
+        
+        // Ovde možete obraditi odgovor sa servera nakon uspešnog kreiranja rezervacije
+        console.log('Rezervacija uspešno kreirana:', response);
+      },
+      (error: any) => {
+        // Ovde možete obraditi grešku prilikom slanja rezervacije
+        console.error('Greška prilikom kreiranja rezervacije:', error);
+      }
+    );
+  }
+
 
   private updateEndMinDate() {
     if (this.endMinDate instanceof Date) {
