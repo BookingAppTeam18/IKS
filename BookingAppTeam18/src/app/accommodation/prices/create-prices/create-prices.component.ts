@@ -5,6 +5,9 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
 import {Price} from "../../model/price";
 import {FormControl, FormGroup} from "@angular/forms";
+import {AccommodationsService} from "../../services/accommodations.service";
+import {Router} from "@angular/router";
+import {PriceService} from "../../services/price.service";
 
 const ELEMENT_DATA: Price[] = [
   {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
@@ -29,5 +32,7 @@ export class CreatePricesComponent {
       endDate : new FormControl(),
       amount : new FormControl()
   });
+
+  constructor(private priceService: PriceService) {}
 
 }
