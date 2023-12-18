@@ -5,6 +5,13 @@ import {HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs";
 import {AccountService} from "./account.service";
 import {ConfigService} from "./config.service";
+import {FormGroup} from "@angular/forms";
+
+
+export interface LoginUser {
+  username: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +28,14 @@ export class AuthService {
 
   private access_token = null;
 
-  login(user:any) {
+  login(user:LoginUser) {
     const loginHeaders = new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
     // const body = `username=${user.username}&password=${user.password}`;
     const body = {
-      'username': user.username,
+      'email': user.username,
       'password': user.password
     };
     return this.apiService.post(this.config.login_url, JSON.stringify(body), loginHeaders)
@@ -54,7 +61,7 @@ export class AuthService {
     this.userService.currentUser = null;
     localStorage.removeItem("jwt");
     this.access_token = null;
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
   tokenIsPresent() {
