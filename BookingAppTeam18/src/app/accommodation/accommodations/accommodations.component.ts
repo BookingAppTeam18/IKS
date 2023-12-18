@@ -10,14 +10,15 @@ import {SharedDataService} from "../service/shared-data.service";
 })
 export class AccommodationsComponent implements OnInit{
   accommodations: Accommodation[];
-  filter:string;
-  search:string;
+  filter:string = "";
+  search:string = "";
   accommodationStart: number;
   accommodationOffset: number;
 
   constructor(private accommodationService:AccommodationService,
               private sharedDataService: SharedDataService)
   {
+    this.accommodations = [];
     this.accommodationStart = 0;
     this.accommodationOffset =8;
     this.sharedDataService.currentFilter.subscribe(filter => {
@@ -43,11 +44,12 @@ export class AccommodationsComponent implements OnInit{
 
   loadNFilteredAccommodations() {
     let httpString:string = "";
-    if(this.filter === ""){
-      httpString = "search=" + this.search;}
-    else{
-      httpString = this.filter + "&search=" + this.search;
-    }
+    if(this.filter !== "")
+      httpString = this.filter;
+    if(this.filter !== "" && this.search !== "")
+      httpString += "&";
+    if(this.search !== "")
+      httpString += "search=" + this.search;
     this.accommodationService.getNFilteredAccommodations(this.accommodations.length,this.accommodationOffset,httpString).subscribe({
     next: (data: Accommodation[]) => {
       // Ažuriraj smeštaj u AccommodationsComponent
@@ -74,17 +76,17 @@ export class AccommodationsComponent implements OnInit{
   }
 
   updateFilter(newFilter: string) {
-    this.accommodations = [];
-    this.filter = newFilter;
-    this.loadNFilteredAccommodations()
+    if (this.filter !== newFilter) {
+      this.accommodations = [];
+      this.filter = newFilter;
+      this.loadNFilteredAccommodations();
+    }
   }
   updateSearch(newSearch: string) {
-    this.accommodations = [];
-    this.search = newSearch;
-    this.loadNFilteredAccommodations()
+    if (this.search !== newSearch) {
+      this.accommodations = [];
+      this.search = newSearch;
+      this.loadNFilteredAccommodations();
+    }
   }
-
-
-
-
 }
