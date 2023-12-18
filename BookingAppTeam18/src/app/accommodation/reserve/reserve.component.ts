@@ -74,7 +74,7 @@ export class ReserveComponent {
     const reservationData = {
       startDate: this.start || new Date(),
       endDate: this.end || new Date(),
-      // numberOfGuests: this.numberOfGuests || 1,
+      numberOfGuests: this.numberOfGuests || 1,
       price: 0, // Add the price property with a default value
       accommodationId: 3, // Add the accommodationId property with a default value
       accountId: 2 // Add the accountId property with a default value
