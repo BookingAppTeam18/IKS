@@ -25,6 +25,10 @@ export class NavBarGuestComponent {
   }
 
   onSearchEnter() {
+    if(this.value == undefined)
+      this.value = "";
+    console.log(this.value);
     this.sharedDataService.Search(this.value);
+
   }
 }

@@ -15,9 +15,13 @@ export class SharedDataService {
   constructor(private accommodationService:AccommodationService) { }
 
   updateFilter(data: string) {
+    if(data == undefined)
+      data = "";
     this.filter.next(data);
   }
   updateSearch(data: string) {
+    if(data == undefined)
+      data = "";
     this.search.next(data);
   }
 
