@@ -29,6 +29,5 @@ export class NavBarGuestComponent {
       this.value = "";
     console.log(this.value);
     this.sharedDataService.Search(this.value);
-
   }
 }
