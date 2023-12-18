@@ -3,20 +3,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
+import {Price} from "../../model/price";
+import {FormControl, FormGroup} from "@angular/forms";
 
-export interface PeriodicElement {
-  startDate: string;
-  endDate: string;
-  price: number;
-  skloni: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {startDate: '1', endDate: 'Hydrogen', price: 1.0079, skloni: 'H'},
-  {startDate: '2', endDate: 'Helium', price: 4.0026, skloni: 'He'},
-  {startDate: '3', endDate: 'Lithium', price: 6.941, skloni: 'Li'},
-  {startDate: '4', endDate: 'Beryllium', price: 9.0122, skloni: 'Be'},
-  {startDate: '5', endDate: 'Boron', price: 10.811, skloni: 'B'},
+const ELEMENT_DATA: Price[] = [
+  {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
+  {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
+  {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
+  {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
 ];
 
 @Component({
@@ -29,5 +23,11 @@ export class CreatePricesComponent {
 
   displayedColumns: string[] = ['Start Date', 'End Date', 'Price', 'Skloni'];
   dataSource = ELEMENT_DATA;
+
+  createPriceForm = new FormGroup({
+      startDate : new FormControl(),
+      endDate : new FormControl(),
+      amount : new FormControl()
+  });
 
 }
