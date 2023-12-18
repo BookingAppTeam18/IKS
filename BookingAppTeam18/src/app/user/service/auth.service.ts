@@ -3,6 +3,8 @@ import {ApiService} from "./api.service";
 import {Router} from "@angular/router";
 import {HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs";
+import {AccountService} from "./account.service";
+import {ConfigService} from "./config.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class AuthService {
 
   constructor(
     private apiService: ApiService,
-    private userService: UserService,
+    private userService: AccountService,
     private config: ConfigService,
     private router: Router
   ) {
