@@ -3,6 +3,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
 import { ReservationService } from '../service/reservation.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -13,6 +14,7 @@ import { ReservationService } from '../service/reservation.service';
 })
 
 export class ReserveComponent {
+  accommodationId: number;
   start: Date | null;
   end: Date | null;
   startMinDate: Date;
@@ -40,7 +42,7 @@ export class ReserveComponent {
     const time=d.getTime();
     return !this.myHolidayDates.find(x=>x.getTime()==time);
   }
-  constructor(private reservationService: ReservationService) {
+  constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
 
     this.start =new Date();
     this.start.setDate(this.start.getDate() +1);
@@ -61,6 +63,12 @@ export class ReserveComponent {
     // this.endMinDate.setDate(this.startMinDate.getDate()+1);
   }
   
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.accommodationId = params['accommodationId'];
+      console.log('Accommodation ID:', this.accommodationId);
+    });
+  }
 
   reserve() {
     // Implementacija vaše postojeće rezervacije
@@ -71,15 +79,15 @@ export class ReserveComponent {
     console.log("Između start i end datuma postoje praznici. Rezervacija nije moguća.");
     return;  // Prekini izvođenje funkcije jer rezervacija nije moguća zbog praznika
   }
-    const reservationData = {
-      startDate: this.start || new Date(),
-      endDate: this.end || new Date(),
-      numberOfGuests: this.numberOfGuests || 1,
-      price: 0, // Add the price property with a default value
-      accommodationId: 3, // Add the accommodationId property with a default value
-      accountId: 2 // Add the accountId property with a default value
-    };
-    console.log(reservationData);
+  const reservationData = {
+    startDate: this.start || new Date(),
+    endDate: this.end || new Date(),
+    numberOfGuests: this.numberOfGuests || 1,
+    price: 200 * ((this.end?.getDate() || 0) - (this.start?.getDate() || 0)), 
+    accommodationId: this.accommodationId, 
+    accountId: 2 
+  };
+  console.log(reservationData);
 
     this.reservationService.createReservation(reservationData).subscribe(
       (response: any) => {
