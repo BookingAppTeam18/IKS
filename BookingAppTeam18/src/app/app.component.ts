@@ -11,12 +11,15 @@ import {UserType} from "./profile/model/userType";
 })
 export class AppComponent {
   title: string = 'BookingApp';
-  currentUser: Profile = anonymus;
+  currentUser: Profile;
 
-  constructor(private accountService: AccountService) {
-    // Pretplata na AccountService da biste dobili trenutnog korisnika
-    this.accountService.getMyInfo().subscribe(user => {
+
+  constructor(private accountService: AccountService) { }
+
+  ngOnInit() {
+    this.accountService.currentUser.subscribe(user => {
       this.currentUser = user;
+      console.log(this.currentUser);
     });
   }
 
