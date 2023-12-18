@@ -46,31 +46,70 @@ export class ReserveComponent {
 
 
     this.end =new Date();
-    this.end.setDate(this.end.getDate() +7);
+    this.end.setDate(this.end.getDate() +2);
 
     this.startMinDate = new Date();
     this.startMinDate.setDate(this.startMinDate.getDate()+1);
 
 
-    this.startMaxDate = new Date();
-    this.startMaxDate.setDate(this.startMaxDate.getDate()+6);
+    // this.startMaxDate = new Date();
+    // this.startMaxDate.setDate(this.startMaxDate.getDate()+6);
 
-    this.endMinDate = new Date();
-    this.endMinDate.setDate(this.endMinDate.getDate()+1);
+    this.endMinDate = new Date(this.startMinDate.getTime() + 1);
+    this.updateEndMinDate();
+    // this.endMinDate.setDate(this.startMinDate.getDate()+1);
   }
 
+  private updateEndMinDate() {
+    if (this.endMinDate instanceof Date) {
+      if (this.start instanceof Date) {
+        const nextDay = new Date(this.start);
+        nextDay.setDate(nextDay.getDate() + 1);
+        this.endMinDate = nextDay;
+        // Traženje prvog dostupnog datuma, preskačući holiday dates
+      while (this.isDateInHoliday(nextDay)) {
+        nextDay.setDate(nextDay.getDate() + 1);
+      }
+        this.end = nextDay;
+      }
+    }
+  }
+
+  private isDateInHoliday(date: Date): boolean {
+    return this.myHolidayDates.some(holidayDate =>
+      date.getDate() === holidayDate.getDate() &&
+      date.getMonth() === holidayDate.getMonth() &&
+      date.getFullYear() === holidayDate.getFullYear()
+    );
+  }
 
   onStartChange() {
-    this.endMinDate = new Date();
-    if(this.start != null)
-    this.endMinDate.setDate(this.start.getDate()+1);
+    this.updateEndMinDate();
+  }
+  
+  private hasHolidayBetweenDates(start: Date, end: Date): boolean {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    for (let current = startDate; current <= endDate; current.setDate(current.getDate() + 1)) {
+      if (this.isDateInHoliday(current)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   // Obrada promene datuma u drugom kalendaru
   onEndChange() {
-    this.startMaxDate = new Date();
-    if(this.end != null)
-    this.startMaxDate.setDate(this.end.getDate()-1);
+    // Provera da li ima praznika između start i end datuma
+    if (this.start instanceof Date && this.end instanceof Date && this.hasHolidayBetweenDates(this.start, this.end)) {
+      // Ako ima praznika, ovde možete dodati odgovarajuću logiku
+      console.log("Između start i end datuma postoje praznici.");
+    }
+    // this.startMaxDate = new Date();
+    // if(this.end != null)
+    // this.startMaxDate.setDate(this.end.getDate()-1);
   }
 
 }
