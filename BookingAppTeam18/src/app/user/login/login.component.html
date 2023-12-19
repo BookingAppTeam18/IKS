@@ -6,17 +6,20 @@
 <body>
 <div class="shadow">
   <div class="login-form">
+
     <img src="../../assets/images/logo.png" height="61" width="98" alt="logo" class="logo-image"/>
-    <form method="post">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="!submitted" [formGroup]="form">
       <div class="form-group">
         <i class="fa fa-user icon"></i>
-        <input type="text" id="email" name="email" required placeholder="Email">
+        <input  formControlName="username" type="text" id="email" name="email" required placeholder="Email">
       </div>
       <div class="form-group">
         <i class="fa fa-key icon"></i>
-        <input type="text" id="password" name="password" required placeholder="Password">
+        <input formControlName="password" id="password" name="password" required placeholder="Password" type="password">
       </div>
-      <button type="button">LOGIN</button>
+      <p *ngIf="notification" [class]="notification.msgType">{{notification.msgBody}}</p>
+      <button [disabled]="!loginForm.form.valid"  color="primary" mat-raised-button
+              type="submit">Login</button>
       <label>Forgot password?</label>
     </form>
   </div>

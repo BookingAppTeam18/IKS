@@ -3,12 +3,12 @@
   <span class="example-spacer"></span>
   <mat-form-field class="search-input">
     <mat-label>Search input</mat-label>
-    <input matInput type="text">
+    <input matInput type="text" [(ngModel)]="value" (keyup.enter)="onSearchEnter()">
     <button matSuffix mat-icon-button aria-label="Search">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
-  <button mat-icon-button class="filter-icon">
+  <button mat-icon-button class="filter-icon" (click)="openDialog()">
     <mat-icon>filter_alt</mat-icon>
   </button>
   <button mat-icon-button class="favorite-icon">

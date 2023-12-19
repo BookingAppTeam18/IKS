@@ -1,3 +1,27 @@
-<app-nav-bar-guest></app-nav-bar-guest>
+<!-- app.component.html -->
+
+<ng-container *ngIf="currentUser && currentUser.userType">
+  <ng-container *ngIf="isGuest(currentUser.userType)">
+    <!-- Prikazi nav bar za ulogovanog običnog korisnika -->
+    <app-nav-bar-user></app-nav-bar-user>
+  </ng-container>
+
+  <ng-container *ngIf="isAnonymus(currentUser.userType)">
+    <!-- Prikazi nav bar za ulogovanog običnog korisnika -->
+    <app-nav-bar-guest ></app-nav-bar-guest>
+  </ng-container>
+
+  <ng-container *ngIf="isOwner(currentUser.userType)">
+    <!-- Prikazi nav bar za ulogovanog običnog korisnika -->
+    <app-nav-bar-owner></app-nav-bar-owner>
+  </ng-container>
+
+  <ng-container *ngIf="isAdmin(currentUser.userType)">
+    <!-- Prikazi nav bar za ulogovanog admina -->
+    <app-nav-bar-admin></app-nav-bar-admin>
+  </ng-container>
+</ng-container>
+
+
 <router-outlet></router-outlet>
 
