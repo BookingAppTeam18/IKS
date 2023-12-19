@@ -16,6 +16,12 @@ import {
   CreateAccommodationComponent
 } from "./accommodation/create accommodation/create-accommodation/create-accommodation.component";
 import {CreatePricesComponent} from "./accommodation/prices/create-prices/create-prices.component";
+import {
+  OwnerAccommodationsComponent
+} from "./accommodation/edit accommodation/owner-accommodations/owner-accommodations.component";
+import {
+  EditAccommodationComponent
+} from "./accommodation/edit accommodation/edit-accommodation/edit-accommodation.component";
 
 
 const routes: Routes = [
@@ -29,7 +35,9 @@ const routes: Routes = [
   {component: ChangePasswordComponent, path:"user-info/change-password"},
   {component: CreateAccommodationComponent, path:"create-accommodation"},
   {component: CreateAccommodationMapComponent, path:"create-map"},
-  {component: CreatePricesComponent, path:"create-prices/:accommodationId"}
+  {component: CreatePricesComponent, path:"create-prices/:accommodationId"},
+  {component: OwnerAccommodationsComponent, path:"accommodations/:ownerId"},
+  {component: EditAccommodationComponent, path:"edit-accommodation/:accommodationId"}
 
 ];
 

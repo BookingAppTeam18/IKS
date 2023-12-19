@@ -85,7 +85,9 @@ import { EditAccommodationComponent } from './edit accommodation/edit-accommodat
     DetailsComponent,
     ReserveComponent,
     CreateAccommodationMapComponent,
-    CreatePricesComponent
+    CreatePricesComponent,
+    EditAccommodationComponent,
+    OwnerAccommodationsComponent
   ]
 })
 export class AccommodationModule { }
