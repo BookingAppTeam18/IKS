@@ -1,7 +1,13 @@
+
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Accommodation} from "./model/accommodation";
 import {AccommodationService } from "../service/accommodation.service";
 import {SharedDataService} from "../service/shared-data.service";
+
+import {HttpClient} from "@angular/common/http";
+import {AccommodationsService} from "../services/accommodations.service";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-accommodations',

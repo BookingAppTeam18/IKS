@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
-import { CreateAccommodationComponent } from './create-accommodation/create-accommodation.component';
 import { DetailsComponent } from './details/details.component';
 import {RouterLink} from "@angular/router";
 import {ProfileModule} from "../profile/profile.module";
+
 import {AccommodationService} from "./service/accommodation.service";
 import { ReserveComponent } from './reserve/reserve.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -26,12 +26,23 @@ import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
 
+import {AccommodationsService} from "./services/accommodations.service";
+import { CreateAccommodationComponent } from './create accommodation/create-accommodation/create-accommodation.component';
+import { CreateAccommodationMapComponent } from './create accommodation/create-accommodation-map/create-accommodation-map.component';
+import {LayoutModule} from "../layout/layout.module";
+import { CreatePricesComponent } from './prices/create-prices/create-prices.component';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatTableModule} from "@angular/material/table";
+
+
 
 
 @NgModule({
   declarations: [
     AccommodationsComponent,
+    DetailsComponent,
     CreateAccommodationComponent,
+
     DetailsComponent,
     ReserveComponent,
 
@@ -39,11 +50,15 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 
     FilterComponent,
 
+    CreateAccommodationMapComponent,
+    CreatePricesComponent
+
   ],
   imports: [
     CommonModule,
     RouterLink,
     ProfileModule,
+
     FormsModule,
     MatInputModule,
     MatDatepickerModule,
@@ -57,7 +72,10 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatIconModule,
     MatGridListModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    LayoutModule,
+    MatRadioModule,
+    MatTableModule
   ],providers: [
     AccommodationService,
   ],
@@ -66,6 +84,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     CreateAccommodationComponent,
     DetailsComponent,
     ReserveComponent,
+    CreateAccommodationMapComponent,
+    CreatePricesComponent
   ]
 })
 export class AccommodationModule { }
