@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #FBF4EF}
+body { margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  color:  #586870;
+  background-color: #FBF4EF}
+
 button.regular-button, input[type = "button"]{
   border-radius: 30px;
   border: 1px solid #000;
