@@ -6,50 +6,50 @@
 <body>
 <div class="shadow">
   <div class="register-form">
-    <form method="post" class="form">
+    <form method="post" class="form" [formGroup]="registerForm">
       <div class="left-form">
         <div class="form-group">
           <label>First Name*</label>
-          <input type="text" id="first-name" name="first-name" required>
+          <input type="text" id="first-name" name="first-name" formControlName="firstName" required>
         </div>
         <div class="form-group">
           <label>Last Name*</label>
-          <input type="text" id="last-name" name="last-name" required>
+          <input type="text" id="last-name" name="last-name" formControlName="lastName" required>
         </div>
         <div class="form-group">
           <label>Phone number*</label>
-          <input type="text" id="phone-number" name="phone-number" required>
+          <input type="text" id="phone-number" name="phone-number" formControlName="phone" required>
         </div>
         <div class="form-group">
           <label>Email*</label>
-          <input type="text" id="email" name="email" required>
+          <input type="text" id="email" name="email" formControlName="email" required>
         </div>
       </div>
       <div method="post" class="right-form">
         <div class="form-group">
           <label>Address*</label>
-          <input type="text" id="address" name="address" required>
+          <input type="text" id="address" name="address" formControlName="address" required>
         </div>
         <div class="form-group">
           <label>Create password*</label>
-          <input type="text" id="create-password" name="create-password" required>
+          <input type="password" id="create-password" name="create-password" formControlName="password" required>
         </div>
         <div class="form-group">
           <label>Confirm password*</label>
-          <input type="text" id="confirm-password" name="confirm-password" required>
+          <input type="password" id="confirm-password" name="confirm-password" formControlName="password2" required>
         </div>
         <div class="form-group">
-          <label id="user-type">User type*</label>
+          <label id="user-type" >User type*</label>
           <div class="radio-container">
             <label class="rbtn" for="owner" >Owner &nbsp;</label>
-            <input class="rbtn" type="radio" id="owner" name="user-type" value="OWNER">
+            <input class="rbtn" type="radio" id="owner" name="user-type" formControlName="userType" value="OWNER">
             <br>
             <label class="rbtn" for="guest">Guest &nbsp;</label>
-            <input class="rbtn" type="radio" id="guest" name="user-type" value="GUEST">
+            <input class="rbtn" type="radio" id="guest" name="user-type" formControlName="userType" value="GUEST">
           </div>
         </div>
       </div>
-      <button type="button">Sign Up</button>
+      <button type="button" (click)="signUp()">Sign Up</button>
     </form>
   </div>
 </div>

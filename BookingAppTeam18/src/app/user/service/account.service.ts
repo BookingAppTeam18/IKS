@@ -34,4 +34,7 @@ export class AccountService {
     return this.currentUserSubject.value;
   }
 
+  createAccount(profile: Profile): Observable<Profile> {
+    return this.http.post<Profile>(environment.apiHost + "api/auth/signup", profile);
+  }
 }
