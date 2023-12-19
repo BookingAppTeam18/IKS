@@ -5,7 +5,6 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
 import {Price} from "../../model/price";
 import {FormControl, FormGroup} from "@angular/forms";
-import {AccommodationsService} from "../../services/accommodations.service";
 import {Router} from "@angular/router";
 import {PriceService} from "../../services/price.service";
 
@@ -34,5 +33,24 @@ export class CreatePricesComponent {
   });
 
   constructor(private priceService: PriceService) {}
+
+    create() {
+        if (this.createPriceForm.valid) {
+            const price: Price = {
+                startDate : this.createPriceForm.value.startDate,
+                endDate : this.createPriceForm.value.endDate,
+                amount : this.createPriceForm.value.amount,
+                accommodationId : 5
+            };
+
+            console.log(price.amount);
+            console.log(price.startDate);
+            this.priceService.add(price).subscribe({
+              next: (data: Price) => {
+                // this.router.navigate(['accommodation']);
+              }
+            });
+        }
+    }
 
 }
