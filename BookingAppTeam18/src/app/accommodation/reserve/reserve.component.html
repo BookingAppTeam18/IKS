@@ -22,20 +22,21 @@
         </div>
         <div class="info_container">
           <div class="info_row">
-            <label>Start Date : {{start?.getDate()}}:{{start?.getMonth()}}:{{start?.getFullYear()}}</label>
+            <label>Start Date : {{start?.getDate()}}:{{start?.getMonth() != null ? start?.getMonth()! + 1 : ''}}:{{start?.getFullYear()}}</label>
           </div>
           <div class="info_row">
-            <label>End Date : {{end?.getDate()}}:{{end?.getMonth()}}:{{end?.getFullYear()}}</label>
+            <label>End Date : {{end?.getDate()}}:{{end?.getMonth() != null ? end?.getMonth()! + 1 : ''}}:{{end?.getFullYear()}}</label>
           </div>
+          
           <div class="info_row">
             <label>Number of Guests : </label>
             <br>
-            <input/>
+            <input type="number" [(ngModel)]="numberOfGuests"/>
           </div>
           <div class="info_row">
             <label>Price : </label>
           </div>
-          <button type="submit">Reserve</button>
+          <button type="button" (click)="reserve()">Reserve</button>
         </div>
       </div>
     </div>
