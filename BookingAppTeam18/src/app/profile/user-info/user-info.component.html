@@ -1,7 +1,12 @@
 <body>
-  <div>
-    <div id = "profile_picture_frame">
-        <img src="" alt="PROFILNA SLIKA" id="profile_picture">
+  <div *ngIf="profile">
+    <div id="picture-delete">
+        <div id = "profile_picture_frame">
+            <img src="" alt="PROFILNA SLIKA" id="profile_picture">
+        </div>
+        <div id="delete-button-div">
+            <input type="button" class="edit_user_info_button" value="Delete account" (click)="deleteAccount(profile)">
+        </div>
     </div>
     <div class="info_frame">
         <div id="user_info_text">
@@ -9,19 +14,24 @@
         </div>
         <div class="info_container">
             <div id="info_row">
-                <label for="first_name">First name: </label>
+                <label for="first_name">First name: &nbsp;</label>
+                <label>{{profile.firstName}}</label>
             </div>
             <div id="info_row">
-                <label for="last_name">Last name: </label>
+                <label for="last_name">Last name:&nbsp; </label>
+                <label>{{profile.lastName}}</label>
             </div>
             <div id="info_row">
-                <label for="email">Email: </label>
+                <label for="email">Email: &nbsp;</label>
+                <label>{{profile.email}}</label>
             </div>
             <div id="info_row">
-                <label for="phone">Phone: </label>
+                <label for="phone">Phone: &nbsp;</label>
+                <label>{{profile.phone}}</label>
             </div>
             <div id="info_row">
-                <label for="address">Address: </label>
+                <label for="address">Address: &nbsp;</label>
+                <label>{{profile.address}}</label>
             </div>
             <div id="edit-buttons">
                 <input type="button" class="edit_user_info_button" value="Edit info" (click)="navigateToEditUser()">

@@ -1,0 +1,39 @@
+mat-slider {
+  width: 400px;
+}
+
+div{
+  text-align: center;
+}
+#price_labels{
+  flex: content;
+}
+mat-grid-tile{
+  margin:0;
+  padding:0;
+  width:20px;
+}
+
+.selected {
+  border: 2px solid blue; /* Prilagodite boju i debljinu granice prema vašim potrebama */
+  border-radius: 50%;
+}
+
+.mat-dialog-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mat-dialog-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+
+mat-dialog-actions{
+  position: sticky;
+  bottom: 0;
+  background-color: white; /* Prilagodite boju prema potrebi */
+  z-index: 2; /* Postavite indeks sloja prema potrebi */
+}

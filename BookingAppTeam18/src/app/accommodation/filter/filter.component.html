@@ -1,0 +1,83 @@
+<h1 mat-dialog-title>Filter</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field>
+      <mat-label>location</mat-label>
+      <mat-select [(ngModel)]="accommodationLocation" >
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let location of locations" [value]="location">{{ location }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div id="Price">
+    <div>
+      <mat-label>Price: </mat-label>
+    </div>
+    <mat-slider [max]="1000">
+      <input matSliderStartThumb [(ngModel)]="minPrice" #slider>
+      <input matSliderEndThumb  [(ngModel)]="maxPrice" #slider>
+    </mat-slider>
+    <div id="price_labels">
+      <mat-label>{{minPrice}} $ </mat-label>
+      <mat-label> - </mat-label>
+      <mat-label> {{maxPrice}} $</mat-label>
+    </div>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>number of guests</mat-label>
+      <input matInput [(ngModel)]= "minNumberOfGuests">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="example-form-field">
+      <mat-label>Dates</mat-label>
+      <mat-date-range-input
+        [formGroup]="vacationLength"
+        [rangePicker]="campaignTwoPicker"
+        [comparisonStart]="vacationLength.value.start"
+        [comparisonEnd]="vacationLength.value.end">
+        <input matStartDate placeholder="Start date" formControlName="start">
+        <input matEndDate placeholder="End date" formControlName="end">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="campaignTwoPicker"></mat-datepicker-toggle>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select [(ngModel)]="accommodationType" >
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let type of types" [value]="type"> {{ type }} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-label>pick benefits</mat-label>
+    <mat-divider></mat-divider>
+    <div>
+      <mat-grid-list cols="4" rowHeight="5:3">
+        <mat-grid-tile *ngFor="let benefitIcon of benefitIcons" (click)="onIconClick(benefitIcon)">
+          <mat-icon aria-hidden="false"
+                    aria-label="Example home icon"
+                    [matTooltip]=benefitIcon.icon
+                    [class.selected]="benefitIcon.isSelected">
+                {{ benefitIcon.icon }}
+          </mat-icon>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onFilterClick()">Filter</button>
+</div>

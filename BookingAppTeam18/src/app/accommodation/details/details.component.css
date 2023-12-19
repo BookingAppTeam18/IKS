@@ -16,7 +16,6 @@ body{
 }
 
 #user_info_text{
-  font-family: "pinyon Script", monospace;
   margin-top: 5%;
   font-size: 50px;
 }
@@ -42,7 +41,6 @@ body{
 }
 
 .info_row {
-  font-family: "pinyon Script", monospace;
   font-size: 28px;
   display: flex;
   flex-wrap: nowrap;
