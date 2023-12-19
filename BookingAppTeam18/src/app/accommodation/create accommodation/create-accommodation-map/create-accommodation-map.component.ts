@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MapService} from "../../../layout/services/map-service.service";
+import {MapService} from "../../../layout/services/map.service";
 import {Accommodation} from "../../model/accommodation";
 import {AccommodationsService} from "../../services/accommodations.service";
 import {Router} from "@angular/router";
