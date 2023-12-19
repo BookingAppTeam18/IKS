@@ -4,6 +4,7 @@ import {Accommodation} from "../../model/accommodation";
 import {AccommodationsService} from "../../services/accommodations.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 declare var L: any;
 
 @Component({
@@ -83,7 +84,11 @@ export class CreateAccommodationMapComponent {
     if (this.accommodation) {
       this.accommodationService.add(this.accommodation).subscribe({
         next: (data: Accommodation) => {
-          this.router.navigate(['accommodation']);
+          this.accommodationService.getAccommodations().subscribe((sve: Accommodation[]) => {
+            // @ts-ignore
+            const id = sve[sve.length - 1]._id + 1; // Uvećaj ID za 1
+            this.router.navigate(['create-prices', String(id)]);
+          });
         }
       });
     } else {

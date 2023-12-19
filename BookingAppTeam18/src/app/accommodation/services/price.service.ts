@@ -18,6 +18,10 @@ export class PriceService {
     return this.http.get<Price[]>(this.path);
   }
 
+  getForAccommodation(id : number): Observable<Price[]> {
+    return this.http.get<Price[]>("http://localhost:8080/api/prices" + id);
+  }
+
   add(price: Price): Observable<Price> {
     return this.http.post<Price>("http://localhost:8080/api/prices", price)
   }

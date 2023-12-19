@@ -23,7 +23,7 @@ const routes: Routes = [
   {component: UserInfoComponent, path:"user-info"},
   {component: CreateAccommodationComponent, path:"create-accommodation"},
   {component: CreateAccommodationMapComponent, path:"create-map"},
-  {component: CreatePricesComponent, path:"create-prices"}
+  {component: CreatePricesComponent, path:"create-prices/:accommodationId"}
 ];
 
 @NgModule({
