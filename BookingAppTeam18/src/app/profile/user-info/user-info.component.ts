@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Profile } from '../model/profile.module';
 import { ProfileService } from '../profile.service';
+import { AccountService } from 'src/app/user/service/account.service';
 
 @Component({
   selector: 'app-user-info',
@@ -10,13 +11,13 @@ import { ProfileService } from '../profile.service';
 })
 export class UserInfoComponent implements  OnInit {
 
-  constructor(private service: ProfileService, private router: Router) { }
-  profile : Profile;
+  constructor(private service: ProfileService, private router: Router, private accountService:AccountService) { }
+  profile = this.accountService.getCurrentUserValue();
   
   // constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.service.getUserInfo().subscribe({next: (data: Profile) => {
+    this.service.getUserInfo(this.profile.id||0).subscribe({next: (data: Profile) => {
       console.log(data);
       this.profile = data;
     },
@@ -46,7 +47,7 @@ export class UserInfoComponent implements  OnInit {
   }
 
   deleteAccount(profile: Profile): void {
-    this.service.deleteUser(profile).subscribe({
+    this.service.deleteUser(profile.id||0).subscribe({
       next: (profile2 : Profile) => {
         console.log('Delete successful');
         this.router.navigate(['/log-in']);

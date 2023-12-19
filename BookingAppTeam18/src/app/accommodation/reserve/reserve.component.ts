@@ -4,6 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
 import { ReservationService } from '../service/reservation.service';
 import { ActivatedRoute } from '@angular/router';
+import { AccountService } from 'src/app/user/service/account.service';
 
 
 
@@ -15,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ReserveComponent {
   accommodationId: number;
+  currentUser = this.accountService.getCurrentUserValue();
   start: Date | null;
   end: Date | null;
   startMinDate: Date;
@@ -42,7 +44,7 @@ export class ReserveComponent {
     const time=d.getTime();
     return !this.myHolidayDates.find(x=>x.getTime()==time);
   }
-  constructor(private reservationService: ReservationService, private route: ActivatedRoute) {
+  constructor(private reservationService: ReservationService, private route: ActivatedRoute, private accountService: AccountService) {
 
     this.start =new Date();
     this.start.setDate(this.start.getDate() +1);
@@ -85,7 +87,7 @@ export class ReserveComponent {
     numberOfGuests: this.numberOfGuests || 1,
     price: 200 * ((this.end?.getDate() || 0) - (this.start?.getDate() || 0)), 
     accommodationId: this.accommodationId, 
-    accountId: 2 
+    accountId: this.currentUser.id || 0
   };
   console.log(reservationData);
 
