@@ -12,8 +12,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatCardModule} from "@angular/material/card";
 
-import { EditAccommodationComponent } from './edit-accommodation/edit-accommodation.component';
-
 import { FilterComponent } from './filter/filter.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -33,6 +31,8 @@ import {LayoutModule} from "../layout/layout.module";
 import { CreatePricesComponent } from './prices/create-prices/create-prices.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {MatTableModule} from "@angular/material/table";
+import { OwnerAccommodationsComponent } from './edit accommodation/owner-accommodations/owner-accommodations.component';
+import { EditAccommodationComponent } from './edit accommodation/edit-accommodation/edit-accommodation.component';
 
 
 
@@ -46,12 +46,12 @@ import {MatTableModule} from "@angular/material/table";
     DetailsComponent,
     ReserveComponent,
 
-    EditAccommodationComponent,
-
     FilterComponent,
 
     CreateAccommodationMapComponent,
-    CreatePricesComponent
+    CreatePricesComponent,
+    OwnerAccommodationsComponent,
+    EditAccommodationComponent
 
   ],
   imports: [
