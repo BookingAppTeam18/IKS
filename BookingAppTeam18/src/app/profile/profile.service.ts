@@ -10,14 +10,18 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-   getUserInfo() : Observable<Profile>{
-    return this.http.get<Profile>('http://localhost:8080/api/users/2');
-   }
+  getUserInfo(userId: number): Observable<Profile> {
+    const url = `http://localhost:8080/api/users/${userId}`;
+    return this.http.get<Profile>(url);
+  }
 
-   updateUserInfo(profile: Profile) : Observable<Profile>{
-    return this.http.put<Profile>('http://localhost:8080/api/users/'+profile.id, profile);
-   }
-   deleteUser(profile: Profile) : Observable<Profile>{
-    return this.http.delete<Profile>('http://localhost:8080/api/users/'+profile.id);
-   }
+  updateUserInfo(profile: Profile): Observable<Profile> {
+    const url = `http://localhost:8080/api/users/${profile.id}`;
+    return this.http.put<Profile>(url, profile);
+  }
+
+  deleteUser(userId: number): Observable<Profile> {
+    const url = `http://localhost:8080/api/users/${userId}`;
+    return this.http.delete<Profile>(url);
+  }
 }
