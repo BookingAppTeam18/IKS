@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "./api.service";
-import {ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {HttpHeaders} from "@angular/common/http";
 import {Observable, map} from "rxjs";
 import {AccountService} from "./account.service";
@@ -74,24 +74,7 @@ export class AuthService {
   getToken() {
     return this.access_token;
   }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    const userType :UserType = this.userService.getCurrentUserValue().userType;
-    if (userType == UserType.ANONYMUS) {
-      this.router.navigate(['log-in']);
-      return false;
-    }
-    if (!route.data['role'].includes(userType)) {
-      this.router.navigate(['']);
-      return false;
-    }
-    return true;
-  }
+
+  
 
 }

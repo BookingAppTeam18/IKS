@@ -28,7 +28,7 @@
     </div>
   </div>
 
-<div class="reserve">
+<div class="reserve" *ngIf="isGuest(currentUser.userType)">
   <app-reserve></app-reserve>
 </div>
 

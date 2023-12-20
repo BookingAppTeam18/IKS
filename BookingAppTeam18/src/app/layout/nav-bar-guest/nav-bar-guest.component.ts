@@ -34,14 +34,17 @@ export class NavBarGuestComponent {
   }
 
   navigateToLogin(): void {
-    this.router.navigate(['/log-in']);
+    try {
+      this.router.navigate(['/log-in']);
+    } catch (error) {
+      console.error('Error during navigation to login:', error);
+    }
+    
+    console.log("Login");
   }
 
   navigateToRegister(): void {
     this.router.navigate(['/register']);
   }
 
-  navigateToAccount(): void {
-    this.router.navigate(['/user-info']);
-  }
 }

@@ -9,18 +9,19 @@ import {UserInfoComponent} from "./profile/user-info/user-info.component";
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { ActivateUserComponent } from './user/activate-user/activate-user.component';
-import { AuthService } from './user/service/auth.service';
+import { AuthGuard } from './infrastructure/auth/auth-guard.service';
+import { UserType } from './profile/model/userType';
 
 const routes: Routes = [
   {component: AccommodationsComponent, path:""},
-  {component: DetailsComponent, path:"details/:accommodationId", canActivate: [AuthService],
-  data: {role: ['ADMIN', 'ANONYMOUS','GUEST']}},
-  {component: CreateAccommodationComponent, path:"create-model"},
-  {component: LoginComponent, path:"log-in"},
-  {component: RegisterComponent, path:"register"},
-  {component: UserInfoComponent, path:"user-info"},
-  {component: EditUserComponent, path:"user-info/edit-user"},
-  {component: ChangePasswordComponent, path:"user-info/change-password"},
+  {component: DetailsComponent, path:"details/:accommodationId", canActivate: [AuthGuard],
+  data: {role: [UserType.ADMIN, UserType.ANONYMUS,UserType.GUEST, UserType.OWNER]}},
+  {component: CreateAccommodationComponent, path:"create-model", canActivate: [AuthGuard],data: {role: [UserType.OWNER]}},
+  {component: LoginComponent, path:"log-in" , canActivate: [AuthGuard],data: {role: [UserType.ANONYMUS]}},
+  {component: RegisterComponent, path:"register", canActivate: [AuthGuard],data: {role: [UserType.ANONYMUS]}},
+  {component: UserInfoComponent, path:"user-info", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
+  {component: EditUserComponent, path:"user-info/edit-user", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
+  {component: ChangePasswordComponent, path:"user-info/change-password", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
   {component: ActivateUserComponent, path:"activate"}
 ];
 
