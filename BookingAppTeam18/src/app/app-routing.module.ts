@@ -15,9 +15,7 @@ import { UserType } from './profile/model/userType';
 import {
   CreateAccommodationMapComponent
 } from "./accommodation/create accommodation/create-accommodation-map/create-accommodation-map.component";
-import {
-  CreateAccommodationComponent
-} from "./accommodation/create accommodation/create-accommodation/create-accommodation.component";
+
 import {CreatePricesComponent} from "./accommodation/prices/create-prices/create-prices.component";
 import {
   OwnerAccommodationsComponent
@@ -25,6 +23,7 @@ import {
 import {
   EditAccommodationComponent
 } from "./accommodation/edit accommodation/edit-accommodation/edit-accommodation.component";
+import { CreateAccommodationComponent } from './accommodation/create accommodation/create-accommodation/create-accommodation.component';
 
 
 const routes: Routes = [
@@ -46,6 +45,7 @@ const routes: Routes = [
   {component: EditUserComponent, path:"user-info/edit-user", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
   {component: ChangePasswordComponent, path:"user-info/change-password", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
   {component: ActivateUserComponent, path:"activate"}
+
 
 ];
 

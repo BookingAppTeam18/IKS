@@ -24,7 +24,6 @@ import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
 
-import { CreateAccommodationComponent } from './create accommodation/create-accommodation/create-accommodation.component';
 import { CreateAccommodationMapComponent } from './create accommodation/create-accommodation-map/create-accommodation-map.component';
 import {LayoutModule} from "../layout/layout.module";
 import { CreatePricesComponent } from './prices/create-prices/create-prices.component';
@@ -32,6 +31,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatTableModule} from "@angular/material/table";
 import { OwnerAccommodationsComponent } from './edit accommodation/owner-accommodations/owner-accommodations.component';
 import { EditAccommodationComponent } from './edit accommodation/edit-accommodation/edit-accommodation.component';
+import { CreateAccommodationComponent } from './create accommodation/create-accommodation/create-accommodation.component';
 
 
 
