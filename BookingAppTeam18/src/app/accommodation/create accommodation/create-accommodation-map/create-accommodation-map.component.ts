@@ -4,7 +4,7 @@ import {Accommodation} from "../../model/accommodation";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {AccommodationsService} from "../../services/accommodations.service";
+import {AccommodationService} from "../../service/accommodation.service";
 declare var L: any;
 
 @Component({
@@ -20,7 +20,7 @@ export class CreateAccommodationMapComponent {
   longi: number;
   lati: number;
 
-  constructor(private http: HttpClient, private mapService: MapService, private accommodationService: AccommodationsService, private router: Router) {}
+  constructor(private http: HttpClient, private mapService: MapService, private accommodationService: AccommodationService, private router: Router) {}
 
   ngOnInit() {
     this.accommodation = this.accommodationService.getAccommodation();

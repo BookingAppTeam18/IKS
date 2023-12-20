@@ -47,6 +47,10 @@ export class AccommodationService {
     return this.http.get<AccommodationInfo[]>(environment.apiHost+this.path + '/'+ start+'/'+offset+'/filter?'+filter);
   }
 
+  getAccommodationsForOwner(ownerId:number){
+    return this.http.get<Accommodation[]>("http://localhost:8080/api/accommodations/owner/"+ownerId);
+  }
+
   getAccommodations():Observable<Accommodation[]> {
     return this.http.get<Accommodation[]>(environment.apiHost+this.path);
   }
