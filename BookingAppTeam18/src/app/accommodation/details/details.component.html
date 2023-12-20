@@ -39,4 +39,8 @@
 <div class="comments">
   <app-comments [comments]="accommodationDetailsDTO.commentsDTO"></app-comments>
 </div>
+<div class="mapa">
+  {{accommodationDetailsDTO | json}}
+  <app-map></app-map>
+</div>
 </body>
