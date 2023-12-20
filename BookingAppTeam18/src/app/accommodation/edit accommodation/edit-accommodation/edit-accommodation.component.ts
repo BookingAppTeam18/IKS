@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProfileService} from "../../../profile/profile.service";
 import {Accommodation} from "../../model/accommodation";
 import {AccommodationService} from "../../service/accommodation.service";
+import {AccountService} from "../../../user/service/account.service";
 
 @Component({
   selector: 'app-edit-accommodation',
@@ -12,6 +13,8 @@ import {AccommodationService} from "../../service/accommodation.service";
   styleUrls: ['./edit-accommodation.component.css']
 })
 export class EditAccommodationComponent {
+
+  currentUser : Profile;
 
   accommodation: Accommodation | null;
   editAccommodationForm = new FormGroup({
@@ -33,8 +36,15 @@ export class EditAccommodationComponent {
     description: new FormControl()
   });
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: AccommodationService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private service: AccommodationService, private accountService: AccountService) {}
   ngOnInit(): void {
+
+    this.accountService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      console.log("USER:::");
+      console.log(this.currentUser);
+    });
+
     this.accommodation = this.service.getAccommodation();
     console.log(this.accommodation)
 
@@ -109,10 +119,11 @@ export class EditAccommodationComponent {
         benefits: this.getSelectedBenefits(),
       };
 
+      console.log(updateAccommodation.benefits);
       this.service.deleteAccommodation(this.accommodation);
       this.service.add(updateAccommodation).subscribe(() => {
         // Uspesno izmenjen smeštaj, navigiraj gde treba
-        this.router.navigate(['']);
+        this.router.navigate(["accommodations/:"+this.currentUser.id]);
       });
     }
   }
