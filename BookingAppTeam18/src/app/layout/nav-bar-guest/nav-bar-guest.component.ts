@@ -4,6 +4,7 @@ import {FilterComponent} from "../../accommodation/filter/filter.component";
 import {AccommodationType} from "../../accommodation/accommodations/model/accommodationType";
 import {Benefit} from "../../accommodation/accommodations/model/benefit";
 import {SharedDataService} from "../../accommodation/service/shared-data.service";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class NavBarGuestComponent {
   value: string;
 
   constructor(public dialog: MatDialog,
-  private sharedDataService: SharedDataService
+  private sharedDataService: SharedDataService,
+  private router: Router
 ) {}
 
   openDialog(): void {
@@ -29,5 +31,17 @@ export class NavBarGuestComponent {
       this.value = "";
     console.log(this.value);
     this.sharedDataService.Search(this.value);
+  }
+
+  navigateToLogin(): void {
+    this.router.navigate(['/log-in']);
+  }
+
+  navigateToRegister(): void {
+    this.router.navigate(['/register']);
+  }
+
+  navigateToAccount(): void {
+    this.router.navigate(['/user-info']);
   }
 }

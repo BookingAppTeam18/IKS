@@ -9,10 +9,12 @@ import {UserInfoComponent} from "./profile/user-info/user-info.component";
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import { ActivateUserComponent } from './user/activate-user/activate-user.component';
+import { AuthService } from './user/service/auth.service';
 
 const routes: Routes = [
   {component: AccommodationsComponent, path:""},
-  {component: DetailsComponent, path:"details/:accommodationId"},
+  {component: DetailsComponent, path:"details/:accommodationId", canActivate: [AuthService],
+  data: {role: ['ADMIN', 'ANONYMOUS','GUEST']}},
   {component: CreateAccommodationComponent, path:"create-model"},
   {component: LoginComponent, path:"log-in"},
   {component: RegisterComponent, path:"register"},
