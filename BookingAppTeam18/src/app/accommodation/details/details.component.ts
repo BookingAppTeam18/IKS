@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MapService} from "../../layout/services/map.service";
 import * as L from 'leaflet';
 import {Accommodation} from "../model/accommodation";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-details',
@@ -13,8 +14,10 @@ import {Accommodation} from "../model/accommodation";
 })
 export class DetailsComponent {
   accommodationDetailsDTO: AccommodationDetails;
-  accommodation : Accommodation | null;
+  accommodation : Observable<Accommodation>;
   map: any;
+  lat: number;
+  lon: number;
 
   constructor(private route: ActivatedRoute, private router: Router, private accommodationService: AccommodationService, private mapService : MapService) {
   }
@@ -23,21 +26,26 @@ export class DetailsComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const id = +params['accommodationId']
+
+
+      this.map = L.map('map').setView([45.2396, 19.8227], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(this.map);
+
       this.accommodationService.getAccommodationDetails(id).subscribe({
-        next: (data: AccommodationDetails) => { this.accommodationDetailsDTO = data }
+        next: (data: AccommodationDetails) => {
+          this.accommodationDetailsDTO = data
+          L.marker([this.accommodationDetailsDTO.accommodationDTO.latitude, this.accommodationDetailsDTO.accommodationDTO.longitude]).addTo(this.map);
+        }
       })
     })
 
-    this.map = L.map('map').setView([45.2396, 19.8227], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(this.map);
-
-    this.accommodation = this.accommodationService.getAccommodation();
 
 
-    L.marker([45.2396, 19.8227]).addTo(this.map);
+
+
 
     //this.searchAddress();
   }
@@ -63,4 +71,5 @@ export class DetailsComponent {
       }
     );
   }
+
 }
