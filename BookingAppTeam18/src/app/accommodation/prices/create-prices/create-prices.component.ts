@@ -60,7 +60,7 @@ export class CreatePricesComponent implements OnInit {
                 startDate : this.createPriceForm.value.startDate,
                 endDate : this.createPriceForm.value.endDate,
                 amount : this.createPriceForm.value.amount,
-                accommodationId : 5 //this.accommodationId
+                accommodationId : this.accommodationId
             };
 
             this.priceService.add(price).subscribe({

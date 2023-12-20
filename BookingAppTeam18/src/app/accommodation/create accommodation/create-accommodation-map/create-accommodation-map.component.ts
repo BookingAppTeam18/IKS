@@ -86,7 +86,7 @@ export class CreateAccommodationMapComponent {
         next: (data: Accommodation) => {
           this.accommodationService.getAccommodations().subscribe((sve: Accommodation[]) => {
             // @ts-ignore
-            const id = sve[sve.length - 1].id + 1; // Uvećaj ID za 1
+            const id = sve[sve.length - 1].id; // Uvećaj ID za 1
             console.log("ID:"+id);
             if (this.accommodation) {
               console.log(this.accommodation.id + "ID od acmd:");
