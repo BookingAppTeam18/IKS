@@ -9,21 +9,22 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
 import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
-
+import { MapComponent } from './map/map/map.component';
 
 @NgModule({
   declarations: [
     NavBarGuestComponent,
     NavBarUserComponent,
     NavBarOwnerComponent,
-    NavBarAdminComponent
+    NavBarAdminComponent,
+    MapComponent
   ],
   exports: [
     NavBarGuestComponent,
     NavBarUserComponent,
     NavBarOwnerComponent,
-    NavBarAdminComponent
+    NavBarAdminComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,

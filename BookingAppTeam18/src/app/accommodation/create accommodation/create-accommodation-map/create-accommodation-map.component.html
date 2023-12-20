@@ -1,0 +1,15 @@
+<div class="map-view">
+    <label>Location</label>
+    <div class="input-group">
+        <input type="text" [(ngModel)]="address" placeholder="Unesite adresu">
+        <button id="search" (click)="searchAddress()">Pronađi</button>
+    </div>
+    <app-map></app-map>
+    <div class="arrow">
+        <button (click)="create()" type="submit"><img alt="strelica" src="../../assets/images/shape.png"></button>
+    </div>
+
+</div>
+<!--<div class="arrow">-->
+<!--    <button (click)="create()" type="submit"><img alt="strelica" src="../../assets/images/shape.png"></button>-->
+<!--</div>-->

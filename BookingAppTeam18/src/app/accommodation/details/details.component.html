@@ -38,13 +38,16 @@
             </mat-grid-list>
           </div>
         </div>
+        <div class = "button">
+          <button type="submit" (click)="navigateToEditAccommodation()">Edit</button>
+        </div>
       </div>
     </div>
 
     </div>
   </div>
 
-<div class="reserve">
+<div class="reserve" *ngIf="isGuest(currentUser.userType)">
   <app-reserve></app-reserve>
 </div>
 
@@ -52,4 +55,9 @@
 <div class="comments">
   <app-comments [comments]="accommodationDetailsDTO.commentsDTO"></app-comments>
 </div>
+<div class="mapa">
+  <app-map></app-map>
+</div>
+
 </body>
+

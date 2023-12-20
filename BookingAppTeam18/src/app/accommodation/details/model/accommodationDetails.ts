@@ -1,6 +1,6 @@
-import {Accommodation} from "../../accommodations/model/accommodation";
+import {AccommodationInfo} from "../../accommodations/model/accommodationInfo";
 import{Comment} from"../../../profile/comments/model/comment";
 export interface AccommodationDetails{
-  accommodationDTO:Accommodation;
+  accommodationDTO:AccommodationInfo;
   commentsDTO:Comment[];
 }
