@@ -43,7 +43,7 @@ export class CreatePricesComponent implements OnInit {
 
         this.route.params.subscribe(params => {
             this.accommodationId = params['accommodationId'];
-            // Sada možeš koristiti accommodationId u komponenti za pristup ID smeštaja
+            console.log(this.accommodationId);
         });
     }
 

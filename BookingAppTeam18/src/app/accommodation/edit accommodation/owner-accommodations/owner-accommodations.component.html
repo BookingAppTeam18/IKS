@@ -2,14 +2,19 @@
 
 <div id="cards">
     <div class="column" *ngFor="let accommodation of accommodations">
-        <div class="card" [routerLink]="'/details/' + accommodation.id">
+        {{ accommodation | json }}
+        <div class="card">
             <img [src]="accommodation.gallery[0]" alt="Avatar">
             <h4><b>{{ accommodation.name }}</b></h4>
+            <div class="edit-button">
+                <button [routerLink]="'/edit-accommodation/' + accommodation.id" class="left-button">Edit info</button>
+                <button>  Edit Availability</button>
+            </div>
             <div class="container">
+
+
                 <div class="details">
-                    <p>Price: {{ accommodation.nextPrice }}</p>
                     <p>Location: {{ accommodation.location }}</p>
-                    <p>ID: {{ accommodation.id }}</p>
                 </div>
                 <div class="icon">
                     <img src="https://picsum.photos/50/50" alt="Icon">

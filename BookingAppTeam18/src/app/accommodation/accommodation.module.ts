@@ -24,7 +24,6 @@ import {MatListModule} from "@angular/material/list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
 
-import {AccommodationsService} from "./services/accommodations.service";
 import { CreateAccommodationComponent } from './create accommodation/create-accommodation/create-accommodation.component';
 import { CreateAccommodationMapComponent } from './create accommodation/create-accommodation-map/create-accommodation-map.component';
 import {LayoutModule} from "../layout/layout.module";

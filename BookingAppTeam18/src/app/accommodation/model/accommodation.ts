@@ -1,5 +1,5 @@
 export interface Accommodation {
-  _id?:number;
+  id?:number;
   name:string;
   benefits:any[];//list enums
   ownerId:number;

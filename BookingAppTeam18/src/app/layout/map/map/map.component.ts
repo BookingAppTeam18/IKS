@@ -1,6 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
-import {AccommodationsService} from "../../../accommodation/services/accommodations.service";
 import {MapService} from "../../services/map.service";
 
 @Component({
