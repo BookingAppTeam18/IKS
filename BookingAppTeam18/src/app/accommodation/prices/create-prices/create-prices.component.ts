@@ -6,7 +6,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {Price} from "../../model/price";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {PriceService} from "../../services/price.service";
+import {PriceService} from "../../service/price.service";
 import {MatTableDataSource} from "@angular/material/table";
 
 // const ELEMENT_DATA: Price[] = [

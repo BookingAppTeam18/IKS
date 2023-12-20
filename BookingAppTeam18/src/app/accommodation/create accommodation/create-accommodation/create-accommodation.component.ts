@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Accommodation } from '../../model/accommodation';
-import { AccommodationsService } from '../../services/accommodations.service';
 import { Router } from '@angular/router';
+import {AccommodationService} from "../../service/accommodation.service";
+import {Accommodation} from "../../model/accommodation";
 
 @Component({
   selector: 'app-create-accommodation',
@@ -29,7 +29,7 @@ export class CreateAccommodationComponent {
     description: new FormControl()
   });
 
-  constructor(private accommodationService: AccommodationsService, private router: Router) {}
+  constructor(private accommodationService: AccommodationService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -49,7 +49,8 @@ export class CreateAccommodationComponent {
         description: this.createAccommodationForm.value.description
       };
 
-      this.accommodationService.setAccommodation(accommodation); // Set accommodation details
+      this.accommodationService.setAccommodation(accommodation);
+      // this.accommodationService.setAccommodation(accommodation); // Set accommodation details
 
       this.router.navigate(['create-map']);
       // this.accommodationService.add(accommodation).subscribe({

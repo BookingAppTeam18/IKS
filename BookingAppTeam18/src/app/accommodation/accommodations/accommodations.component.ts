@@ -1,11 +1,10 @@
 
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Accommodation} from "./model/accommodation";
+import {AccommodationInfo} from "./model/accommodationInfo";
 import {AccommodationService } from "../service/accommodation.service";
 import {SharedDataService} from "../service/shared-data.service";
 
 import {HttpClient} from "@angular/common/http";
-import {AccommodationsService} from "../services/accommodations.service";
 import {Observable} from "rxjs";
 
 
@@ -15,7 +14,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./accommodations.component.css']
 })
 export class AccommodationsComponent implements OnInit{
-  accommodations: Accommodation[];
+  accommodations: AccommodationInfo[];
   filter:string = "";
   search:string = "";
   accommodationStart: number;
@@ -42,7 +41,7 @@ export class AccommodationsComponent implements OnInit{
 
   loadAllAccommodations() {
     this.accommodationService.getAll().subscribe({
-      next: (data: Accommodation[]) => {
+      next: (data: AccommodationInfo[]) => {
         this.accommodations = data;
       }
     });
@@ -57,7 +56,7 @@ export class AccommodationsComponent implements OnInit{
     if(this.search !== "")
       httpString += "search=" + this.search;
     this.accommodationService.getNFilteredAccommodations(this.accommodations.length,this.accommodationOffset,httpString).subscribe({
-    next: (data: Accommodation[]) => {
+    next: (data: AccommodationInfo[]) => {
       // Ažuriraj smeštaj u AccommodationsComponent
       this.accommodations = this.accommodations.concat(data);
       console.log(data);
