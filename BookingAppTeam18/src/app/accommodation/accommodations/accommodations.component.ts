@@ -6,6 +6,7 @@ import {SharedDataService} from "../service/shared-data.service";
 
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Accommodation} from "../model/accommodation";
 
 
 @Component({
@@ -37,6 +38,7 @@ export class AccommodationsComponent implements OnInit{
   }
   ngOnInit() {
     this.loadNFilteredAccommodations();
+
   }
 
   loadAllAccommodations() {
@@ -94,4 +96,6 @@ export class AccommodationsComponent implements OnInit{
       this.loadNFilteredAccommodations();
     }
   }
+
+
 }

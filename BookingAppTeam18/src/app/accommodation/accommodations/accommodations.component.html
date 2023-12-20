@@ -24,7 +24,7 @@
 
   <hr>
   <div id="cards">
-    <div class="column" *ngFor="let accommodation of accommodations">
+    <div class="column" *ngFor="let accommodation of accommodations; let i = index;">
       <div class="card" [routerLink]="'/details/' + accommodation.id">
         <img [src]="accommodation.gallery[0]" alt="Avatar">
         <h4><b>{{ accommodation.name }}</b></h4>

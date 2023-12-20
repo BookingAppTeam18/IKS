@@ -4,6 +4,7 @@ import {AccommodationDetails} from "./model/accommodationDetails";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MapService} from "../../layout/services/map.service";
 import * as L from 'leaflet';
+import {Accommodation} from "../model/accommodation";
 
 @Component({
   selector: 'app-details',
@@ -12,6 +13,7 @@ import * as L from 'leaflet';
 })
 export class DetailsComponent {
   accommodationDetailsDTO: AccommodationDetails;
+  accommodation : Accommodation | null;
   map: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private accommodationService: AccommodationService, private mapService : MapService) {
@@ -26,7 +28,18 @@ export class DetailsComponent {
       })
     })
 
-    this.searchAddress();
+    this.map = L.map('map').setView([45.2396, 19.8227], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(this.map);
+
+    this.accommodation = this.accommodationService.getAccommodation();
+
+
+    L.marker([45.2396, 19.8227]).addTo(this.map);
+
+    //this.searchAddress();
   }
   navigateToEditAccommodation(): void {
     console.log("navigateToEditAccommodation");
