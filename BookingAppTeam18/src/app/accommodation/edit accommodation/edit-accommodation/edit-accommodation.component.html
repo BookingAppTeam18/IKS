@@ -1,0 +1,41 @@
+<form [formGroup]="editAccommodationForm">
+    <div class="info">
+        <label>Informations about apartment*</label>
+        <input type="text" placeholder="Name" formControlName="name">
+        <input type="number" placeholder="Min number of guests" formControlName="minGuests">
+        <input type="number" placeholder="Max number of guests" formControlName="maxGuests">
+        <div class="custom-select" style="width:200px;">
+            <select formControlName="type">
+                <option value="0">Type</option>
+                <option value="1">Room</option>
+                <option value="2">Apartment</option>
+                <option value="3">Studio</option>
+                <option value="4">Hotel</option>
+                <option value="5">Entire house</option>
+            </select>
+        </div>
+
+        <div formGroupName="benefits">
+            <label><input value="1" type="checkbox" formControlName="WiFi"> <mat-icon>wifi</mat-icon> WiFi</label>
+            <label><input value="2" type="checkbox" formControlName="airConditioner"> <mat-icon>ac_unit</mat-icon> AC</label>
+            <label><input value="2" type="checkbox" formControlName="kitchen"> <mat-icon>kitchen</mat-icon> Kitchen</label>
+            <label><input value="2" type="checkbox" formControlName="parking"> <mat-icon>local_parking</mat-icon> Free parking</label>
+            <label><input value="2" type="checkbox" formControlName="tv"> <mat-icon>tv</mat-icon> TV</label>
+            <label><input value="2" type="checkbox" formControlName="balcony"> <mat-icon>balcony</mat-icon> Balcony</label>
+            <label><input value="2" type="checkbox" formControlName="yard"> <mat-icon>yard</mat-icon> Yard</label>
+            <label><input value="2" type="checkbox" formControlName="petFriendly"> <mat-icon>pets</mat-icon> Pet friendly</label>
+            <label><input value="2" type="checkbox" formControlName="elevator"> <mat-icon>elevator</mat-icon> Elevator</label>
+        </div>
+
+        <textarea placeholder="Description" formControlName="description"></textarea>
+    </div>
+    <div class="view-img">
+        <label>View images</label>
+    </div>
+    <div class="upload-img">
+        <button><mat-icon>cloud_upload</mat-icon></button>
+    </div>
+    <div class="arrow">
+        <button (click)="onSubmit()" id="arrow" type="submit"> Done </button>
+    </div>
+</form>

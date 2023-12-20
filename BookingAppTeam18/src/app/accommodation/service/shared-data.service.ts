@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {Accommodation} from "../accommodations/model/accommodation";
+import {AccommodationInfo} from "../accommodations/model/accommodationInfo";
 import {AccommodationService} from "./accommodation.service";
 import {HttpClient} from "@angular/common/http";
 @Injectable({

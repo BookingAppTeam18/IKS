@@ -2,7 +2,7 @@ import { AccommodationType } from './accommodationType';
 import { Benefit } from './benefit';
 
 
-export interface Accommodation {
+export interface AccommodationInfo {
   id:number;
   ownerId:number;
   name:string;
