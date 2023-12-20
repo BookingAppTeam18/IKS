@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "./api.service";
-import {Router} from "@angular/router";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {HttpHeaders} from "@angular/common/http";
-import {map} from "rxjs";
+import {Observable, map} from "rxjs";
 import {AccountService} from "./account.service";
 import {ConfigService} from "./config.service";
 import {FormGroup} from "@angular/forms";
@@ -74,5 +74,7 @@ export class AuthService {
   getToken() {
     return this.access_token;
   }
+
+  
 
 }

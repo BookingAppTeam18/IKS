@@ -6,6 +6,10 @@ import {MapService} from "../../layout/services/map.service";
 import * as L from 'leaflet';
 import {Accommodation} from "../model/accommodation";
 import {Observable} from "rxjs";
+import { UserType, UserTypeHelper } from 'src/app/profile/model/userType';
+import { Profile } from 'src/app/profile/model/profile.module';
+import { AccountService } from 'src/app/user/service/account.service';
+
 
 @Component({
   selector: 'app-details',
@@ -19,7 +23,11 @@ export class DetailsComponent {
   lat: number;
   lon: number;
 
-  constructor(private route: ActivatedRoute, private router: Router, private accommodationService: AccommodationService, private mapService : MapService) {
+  currentUser: Profile;
+
+  constructor(private route: ActivatedRoute, private router: Router, private accommodationService: AccommodationService, private accountService: AccountService, private mapService : MapService) {
+    console.log("USER:::");
+    console.log(this.currentUser);
   }
 
 
@@ -43,11 +51,6 @@ export class DetailsComponent {
     })
 
 
-
-
-
-
-    //this.searchAddress();
   }
   navigateToEditAccommodation(): void {
     console.log("navigateToEditAccommodation");
@@ -70,6 +73,23 @@ export class DetailsComponent {
         console.error('Greška prilikom dobijanja informacija o lokaciji:', error);
       }
     );
+    
+    this.accountService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      console.log("USER:::");
+      console.log(this.currentUser);
+    });
+  }
+
+
+  
+
+  
+    
+  isGuest(userType: string | number): boolean {
+    const userTypeEnum = UserTypeHelper.stringToEnumValue(userType);
+    return userTypeEnum === UserType.GUEST;
+
   }
 
 }

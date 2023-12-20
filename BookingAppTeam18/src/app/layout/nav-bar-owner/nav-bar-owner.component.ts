@@ -4,6 +4,7 @@ import {SharedDataService} from "../../accommodation/service/shared-data.service
 import {FilterComponent} from "../../accommodation/filter/filter.component";
 import {AccountService} from "../../user/service/account.service";
 import {Profile} from "../../profile/model/profile.module";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar-owner',
@@ -16,7 +17,9 @@ export class NavBarOwnerComponent implements OnInit{
 
   constructor(public dialog: MatDialog,
               private sharedDataService: SharedDataService,
-              private accountService: AccountService
+              private accountService: AccountService,
+              private router: Router
+
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +35,14 @@ export class NavBarOwnerComponent implements OnInit{
     const dialogRef = this.dialog.open(FilterComponent, {
     });
 
+  }
+
+  navigateToAccount(): void {
+    this.router.navigate(['/user-info']);
+  }
+
+  navigateToRequests(): void {
+    console.log("Requests");
   }
 
   onSearchEnter() {
