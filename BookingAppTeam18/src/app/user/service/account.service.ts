@@ -37,4 +37,8 @@ export class AccountService {
   createAccount(profile: Profile): Observable<Profile> {
     return this.http.post<Profile>(environment.apiHost + "api/auth/signup", profile);
   }
+
+  activateUser(email: string): Observable<any> {
+    return this.http.put<any>(environment.apiHost+"api/auth/activate?email="+email, {});
+}
 }

@@ -8,6 +8,7 @@ import {RegisterComponent} from "./user/register/register.component";
 import {UserInfoComponent} from "./profile/user-info/user-info.component";
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { ActivateUserComponent } from './user/activate-user/activate-user.component';
 
 const routes: Routes = [
   {component: AccommodationsComponent, path:""},
@@ -17,8 +18,8 @@ const routes: Routes = [
   {component: RegisterComponent, path:"register"},
   {component: UserInfoComponent, path:"user-info"},
   {component: EditUserComponent, path:"user-info/edit-user"},
-  {component: ChangePasswordComponent, path:"user-info/change-password"}
-
+  {component: ChangePasswordComponent, path:"user-info/change-password"},
+  {component: ActivateUserComponent, path:"activate"}
 ];
 
 @NgModule({
