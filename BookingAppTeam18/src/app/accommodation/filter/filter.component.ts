@@ -45,6 +45,7 @@ export class FilterComponent {
     new BenefitIcon(Benefit.KITCHEN,"kitchen",8),
     new BenefitIcon(Benefit.PET_FRIENDLY,"pet",9),
   ];
+
   types: string[]=[
     'Room',
     'Apartment',
@@ -52,6 +53,7 @@ export class FilterComponent {
     'Hotel',
     "House",
   ];
+
   locations: string[] = [
     'Backi jarak',
     'Nakovo',
@@ -83,6 +85,7 @@ export class FilterComponent {
     this.dialogRef.close();
   }
   onIconClick(benefitIcon: BenefitIcon): void {
+    console.log(benefitIcon);
     // Toggle isSelected za trenutno kliknutu ikonicu
     benefitIcon.isSelected = !benefitIcon.isSelected;
     if(benefitIcon.isSelected){

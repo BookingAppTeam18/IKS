@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <body>
 <div>
@@ -19,8 +20,23 @@
         <div class="info_row">
           <label>Location: {{accommodationDetailsDTO.accommodationDTO.location}}</label>
         </div>
-        <div class="info_row">
-          <label>Benefits: {{accommodationDetailsDTO.accommodationDTO.benefits}}</label>
+        <div>
+          <label>Benefits</label>
+          <mat-divider></mat-divider>
+          <div>
+
+            <mat-grid-list cols="4" rowHeight="5:3">
+              <mat-grid-tile *ngFor="let benefit of accommodationDetailsDTO.accommodationDTO.benefits">
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+                  [matTooltip]=getBenefitIcon(benefit)
+                >
+                  {{ getBenefitIcon(benefit)}}
+                </mat-icon>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
         </div>
         <div class = "button">
           <button type="submit" (click)="navigateToEditAccommodation()">Edit</button>

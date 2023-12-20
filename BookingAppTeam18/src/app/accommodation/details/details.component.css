@@ -4,6 +4,7 @@ body{
   flex-direction: column;
 }
 
+
 .info_frame{
   float: right;
   text-align: center;
@@ -20,6 +21,15 @@ body{
   font-size: 50px;
 }
 
+
+.edit_user_info_button{
+  padding: 8px 12px;
+  width: 100px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+
 .top_comments{
   float: right;
   text-align: center;
@@ -31,19 +41,15 @@ body{
   border: 1px solid #000000
 }
 
-
-
-.edit_user_info_button{
-  padding: 8px 12px;
-  width: 100px;
-  cursor: pointer;
-  margin-left: auto;
+label{
+  font-size: 30px;
 }
 
 .info_row {
   font-size: 28px;
   display: flex;
   flex-wrap: nowrap;
+  flex: 1; /* Dodajte ovu liniju */
 }
 
 .info_container {
