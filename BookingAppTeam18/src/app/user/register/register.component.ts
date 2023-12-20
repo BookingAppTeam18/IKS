@@ -14,12 +14,12 @@ export class RegisterComponent {
   registerForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.email),
     phone: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     password2: new FormControl('', Validators.required),
-    userType: new FormControl('', Validators.required)
+    userType: new FormControl(UserType.OWNER, Validators.required)
   });
 
   signUp(): void {
@@ -30,33 +30,29 @@ export class RegisterComponent {
       email: this.registerForm.value.email || '',
       phone: this.registerForm.value.phone || '',
       address: this.registerForm.value.address || '',
-      userType: this.convertToUserType(this.registerForm.value.userType || ''),
+      userType: this.registerForm.value.userType || UserType.ANONYMUS,
       password: ''
     };
+    if (this.registerForm.invalid) {
+      console.log('Forma nije ispravna. Molimo popunite sva obavezna polja.');
+      return;
+    }
     if (this.registerForm.value.password !== this.registerForm.value.password2) {
       console.log('Passwords do not match');
       return;
     }
     profile.password = this.registerForm.value.password || '';
-    // this.accountService.createAccount(profile).subscribe(
-    //   (response: any) => {
+    this.accountService.createAccount(profile).subscribe(
+      (response: any) => {
         
        
-    //     console.log('Registracija uspješna:', response);
-    //   },
-    //   (error: any) => {
-    //     console.error('Greška:', error);
-    //   }
-    // );
+        console.log('Registracija uspješna:', response);
+      },
+      (error: any) => {
+        console.error('Greška:', error);
+      }
+    );
   }
-  convertToUserType(value: string): UserType {
-    switch (value) {
-      case 'OWNER':
-        return UserType.OWNER;
-      case 'GUEST':
-        return UserType.GUEST;
-      default:
-        return UserType.ANONYMUS;
-    }
-}
+  
+
 }
