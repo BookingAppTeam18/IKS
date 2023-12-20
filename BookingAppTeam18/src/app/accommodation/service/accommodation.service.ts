@@ -6,6 +6,7 @@ import {AccommodationModule} from "../accommodation.module";
 import {environment} from "../../../env/env";
 import {AccommodationDetails} from "../details/model/accommodationDetails";
 import { Accommodation } from '../model/accommodation';
+import {Profile} from "../../profile/model/profile.module";
 
 @Injectable()
 export class AccommodationService {
@@ -66,4 +67,13 @@ export class AccommodationService {
   setAccommodation(accommodation: Accommodation): void {
     this.accommodation = accommodation;
   }
+
+  deleteAccommodation(accommodation: Accommodation) : Observable<Accommodation>{
+    return this.http.delete<Accommodation>('http://localhost:8080/api/accommodations/'+accommodation.id);
+  }
+
+  getAccommodationById(id: number): Observable<Accommodation> {
+    return this.http.get<Accommodation>(`http://localhost:8080/api/accommodations/${id}`);
+  }
+
 }

@@ -24,7 +24,7 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class CreatePricesComponent implements OnInit {
 
-  accommodationId: string;
+  accommodationId: number;
   displayedColumns: string[] = ['Start Date', 'End Date', 'Price'];
   // dataSource = ELEMENT_DATA;
   dataSource = new MatTableDataSource<Price>();
@@ -43,12 +43,12 @@ export class CreatePricesComponent implements OnInit {
 
         this.route.params.subscribe(params => {
             this.accommodationId = params['accommodationId'];
-            console.log(this.accommodationId);
+            console.log(typeof this.accommodationId);
         });
     }
 
     loadPrices() {
-        this.priceService.getForAccommodation(parseInt(this.accommodationId)).subscribe((prices: Price[]) => {
+        this.priceService.getForAccommodation(this.accommodationId).subscribe((prices: Price[]) => {
             this.dataSource.data = prices; // Postavi učitane podatke kao dataSource
         });
     }
@@ -60,7 +60,7 @@ export class CreatePricesComponent implements OnInit {
                 startDate : this.createPriceForm.value.startDate,
                 endDate : this.createPriceForm.value.endDate,
                 amount : this.createPriceForm.value.amount,
-                accommodationId : 5//parseInt(this.accommodationId)
+                accommodationId : 5 //this.accommodationId
             };
 
             this.priceService.add(price).subscribe({

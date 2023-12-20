@@ -3,7 +3,7 @@ import {AccommodationService} from "../../service/accommodation.service";
 import {Accommodation} from "../../model/accommodation";
 import {AccountService} from "../../../user/service/account.service";
 import {anonymus, Profile} from "../../../profile/model/profile.module";
-import {Router} from "@angular/router";
+import {NavigationExtras, Router} from "@angular/router";
 import {AccommodationInfo} from "../../accommodations/model/accommodationInfo";
 
 @Component({
@@ -14,6 +14,7 @@ import {AccommodationInfo} from "../../accommodations/model/accommodationInfo";
 export class OwnerAccommodationsComponent implements OnInit{
   accommodations: Accommodation[] = [];
   currentUser : Profile;
+  selectedAccommodation: Accommodation | null = null;
 
   ngOnInit(): void {
 
@@ -54,9 +55,12 @@ export class OwnerAccommodationsComponent implements OnInit{
       }
     }
 
-   selectAccommodation(){
-      console.log(this.accommodations);
-       this.router.navigate(['edit-accommodation', this.accommodations[0].id]);
-   }
+    editAccommodation(index: number) {
+        this.selectedAccommodation = this.accommodations[index];
+        console.log("Selected Accommodation:");
+        console.log(this.selectedAccommodation);
+        this.accommodationService.setAccommodation(this.selectedAccommodation);
+        // Dalji koraci za editovanje ili rutiranje ka stranici za uređivanje informacija
+    }
 
 }
