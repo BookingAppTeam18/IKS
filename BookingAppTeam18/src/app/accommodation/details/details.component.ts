@@ -58,6 +58,11 @@ export class DetailsComponent {
 
 
   ngOnInit(): void {
+    this.accountService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      console.log("USER:::");
+      console.log(this.currentUser);
+    });
     this.route.params.subscribe((params) => {
       const id = +params['accommodationId']
 
@@ -73,7 +78,7 @@ export class DetailsComponent {
           this.accommodationDetailsDTO = data
           marker([this.accommodationDetailsDTO.accommodationDTO.latitude, this.accommodationDetailsDTO.accommodationDTO.longitude]).addTo(this.map);
         }
-      })
+      });
     })
 
 
@@ -112,11 +117,7 @@ export class DetailsComponent {
       }
     );
 
-    this.accountService.currentUser.subscribe(user => {
-      this.currentUser = user;
-      console.log("USER:::");
-      console.log(this.currentUser);
-    });
+    
   }
 
 
