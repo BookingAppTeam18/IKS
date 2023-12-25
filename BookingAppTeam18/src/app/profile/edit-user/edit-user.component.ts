@@ -49,6 +49,7 @@ updateUserInfo(): void {
     address: this.editUserForm.value.address || '',
     password: this.profile.password,
     userType: this.profile.userType,
+    userState: this.profile.userState,
     id: this.profile.id
   };
   this.service.updateUserInfo(updatedProfile).subscribe({

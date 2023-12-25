@@ -1,3 +1,4 @@
+import { UserState } from "./userState";
 import { UserType } from "./userType"
 
 export interface Profile{
@@ -9,6 +10,7 @@ export interface Profile{
     phone:string;
     address:string;
     userType: UserType;
+    userState? : UserState;
 }
 export const anonymus: Profile = {
   firstName: '',
