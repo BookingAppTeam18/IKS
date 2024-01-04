@@ -32,6 +32,7 @@ import {MatTableModule} from "@angular/material/table";
 import { OwnerAccommodationsComponent } from './edit accommodation/owner-accommodations/owner-accommodations.component';
 import { EditAccommodationComponent } from './edit accommodation/edit-accommodation/edit-accommodation.component';
 import { CreateAccommodationComponent } from './create accommodation/create-accommodation/create-accommodation.component';
+import { ApproveAccommodationComponent } from './approve-accommodation/approve-accommodation.component';
 
 
 
@@ -50,7 +51,8 @@ import { CreateAccommodationComponent } from './create accommodation/create-acco
     CreateAccommodationMapComponent,
     CreatePricesComponent,
     OwnerAccommodationsComponent,
-    EditAccommodationComponent
+    EditAccommodationComponent,
+    ApproveAccommodationComponent
 
   ],
   imports: [

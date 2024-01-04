@@ -6,8 +6,10 @@
             <img [src]="accommodation.gallery[0]" alt="Avatar">
             <h4><b>{{ accommodation.name }}</b></h4>
             <div class="edit-button">
-                <button (click)="editAccommodation(i)" [routerLink]="'/edit-accommodation/' + accommodation.id" class="left-button">Approve</button>
+                <button (click)="editAccommodation(i)" [routerLink]="'/edit-accommodation/' + accommodation.id" class="left-button">Edit info</button>
 <!--                <button>  Edit Availability</button>-->
+                <button (click)="viewDetails(i)" class="right-button">Details</button>
+                <button (click)="deleteAccommodation(i)" class="right-button">Reject</button>
             </div>
             <div class="container">
 

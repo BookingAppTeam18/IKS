@@ -39,6 +39,6 @@ export class AccountService {
   }
 
   activateUser(email: string): Observable<any> {
-    return this.http.put<any>(environment.apiHost+"api/auth/activate?email="+email, {});
+    return this.http.get<any>(environment.apiHost+"api/auth/activate?email="+email, {});
 }
 }
