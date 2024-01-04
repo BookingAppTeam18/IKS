@@ -20,6 +20,6 @@ export class ImageService {
   }
 
   upload(image: FormData): Observable<any> {
-    return this.http.post<any>(this.path, image)
+    return this.http.post<any>(this.path+"upload", image)
   }
 }
