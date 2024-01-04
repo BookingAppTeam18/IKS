@@ -10,6 +10,7 @@ import { UserType, UserTypeHelper } from 'src/app/profile/model/userType';
 import { Profile } from 'src/app/profile/model/profile.module';
 import { AccountService } from 'src/app/user/service/account.service';
 import {Benefit} from "../accommodations/model/benefit";
+import {ImageService} from "../service/image-service.service";
 
 
 export class BenefitIcon{
@@ -51,7 +52,7 @@ export class DetailsComponent {
 
   currentUser: Profile;
 
-  constructor(private route: ActivatedRoute, private router: Router, private accommodationService: AccommodationService, private accountService: AccountService, private mapService : MapService) {
+  constructor(private route: ActivatedRoute, private router: Router,  private imageService: ImageService, private accommodationService: AccommodationService, private accountService: AccountService, private mapService : MapService) {
     console.log("USER:::");
     console.log(this.currentUser);
   }
@@ -76,6 +77,7 @@ export class DetailsComponent {
       this.accommodationService.getAccommodationDetails(id).subscribe({
         next: (data: AccommodationDetails) => {
           this.accommodationDetailsDTO = data
+          console.log(data.accommodationDTO.gallery);
           marker([this.accommodationDetailsDTO.accommodationDTO.latitude, this.accommodationDetailsDTO.accommodationDTO.longitude]).addTo(this.map);
         }
       });
@@ -117,7 +119,7 @@ export class DetailsComponent {
       }
     );
 
-    
+
   }
 
 

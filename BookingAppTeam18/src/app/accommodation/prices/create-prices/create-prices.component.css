@@ -1,6 +1,5 @@
 .form-info{
     margin-top: 40px;
-    margin-left: 28%;
 
     display: flex;
     width: 658px;
@@ -14,6 +13,10 @@
 
     /* smaller window */
     box-shadow: 3px 6px 0px 0px rgba(0, 0, 0, 0.25), 2px 2px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.form-container {
+  display: flex;
+  justify-content:space-around;
 }
 
 .container {

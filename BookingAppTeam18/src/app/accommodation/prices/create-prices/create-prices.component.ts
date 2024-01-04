@@ -8,13 +8,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PriceService} from "../../service/price.service";
 import {MatTableDataSource} from "@angular/material/table";
-
-// const ELEMENT_DATA: Price[] = [
-//   {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
-//   {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
-//   {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
-//   {startDate: new Date('2023-12-31'), endDate: new Date('2023-12-31'), amount: 1079, accommodationId: 5},
-// ];
+import {ImageService} from "../../service/image-service.service";
 
 @Component({
   selector: 'app-create-prices',
@@ -35,7 +29,11 @@ export class CreatePricesComponent implements OnInit {
       amount : new FormControl()
   });
 
-  constructor(private priceService: PriceService, private router: Router, private route: ActivatedRoute) {}
+  createImageForm = new FormGroup({
+    image: new FormControl(),
+  });
+
+  constructor(private imageService: ImageService, private priceService: PriceService, private router: Router, private route: ActivatedRoute) {}
 
     ngOnInit() {
         // Učitavanje podataka iz baze odmah po inicijalizaciji komponente
@@ -72,14 +70,27 @@ export class CreatePricesComponent implements OnInit {
             });
         }
     }
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
 
-    // remove(priceToRemove: Price) {
-    //     // Brisanje podataka
-    //     this.priceService.remove(priceToRemove).subscribe(() => {
-    //         // Ažuriranje prikaza nakon brisanja
-    //         this.dataSource.data = this.dataSource.data.filter(price => price !== priceToRemove);
-    //         this.dataSource._updateChangeSubscription(); // Ažuriraj prikaz
-    //     });
-    // }
+    if (file) {
+
+      const formData: FormData = new FormData();
+      formData.append('file', file);
+      formData.append('accommodationId', String(this.accommodationId));
+
+      this.imageService.upload(formData).subscribe({
+        next: (uploadedImage: any) => {
+          console.log('Image uploaded successfully:', uploadedImage);
+          // Handle success
+        },
+        error: (error: any) => {
+          console.error('Error uploading image:', error);
+          // Handle error
+        }
+      });
+    }
+  }
+
 
 }
