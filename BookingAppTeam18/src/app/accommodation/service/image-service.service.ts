@@ -7,19 +7,19 @@ import {Observable} from "rxjs";
 })
 export class ImageService {
 
-  private readonly path ="http://localhost:8080/api/content";
+  private readonly path ="http://localhost:8080/api/image/";
 
   constructor(private http: HttpClient) { }
 
-  getAll():Observable<String[]> {
-    return this.http.get<String[]>(this.path);
+  getAll():Observable<string[]> {
+    return this.http.get<string[]>(this.path);
   }
 
-  getForAccommodation(id : number): Observable<String[]> {
-    return this.http.get<String[]>("http://localhost:8080/api/content/" + id);
+  getForAccommodation(id : number): Observable<string[]> {
+    return this.http.get<string[]>(this.path + id);
   }
 
   upload(image: FormData): Observable<any> {
-    return this.http.post<any>("http://localhost:8080/api/content/upload", image)
+    return this.http.post<any>(this.path, image)
   }
 }

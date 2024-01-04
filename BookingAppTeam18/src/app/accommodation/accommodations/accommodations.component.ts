@@ -7,6 +7,7 @@ import {SharedDataService} from "../service/shared-data.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Accommodation} from "../model/accommodation";
+import {ImageService} from "../service/image-service.service";
 
 
 @Component({
@@ -22,15 +23,18 @@ export class AccommodationsComponent implements OnInit{
   accommodationOffset: number;
 
   constructor(private accommodationService:AccommodationService,
+              private imageService:ImageService,
               private sharedDataService: SharedDataService)
   {
     this.accommodations = [];
     this.accommodationStart = 0;
     this.accommodationOffset =8;
+
     this.sharedDataService.currentFilter.subscribe(filter => {
     // Ažuriraj smeštaj u AccommodationsComponent
     this.updateFilter(filter);
   });
+
     this.sharedDataService.currentSearch.subscribe(search => {
       // Ažuriraj smeštaj u AccommodationsComponent
       this.updateSearch(search);
@@ -61,8 +65,6 @@ export class AccommodationsComponent implements OnInit{
     next: (data: AccommodationInfo[]) => {
       // Ažuriraj smeštaj u AccommodationsComponent
       this.accommodations = this.accommodations.concat(data);
-      console.log(data);
-      console.log(httpString);
     }
   });
   }
