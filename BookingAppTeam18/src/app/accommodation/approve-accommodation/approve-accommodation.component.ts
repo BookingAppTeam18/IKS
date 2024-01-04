@@ -24,7 +24,7 @@ export class ApproveAccommodationComponent {
       });
 
       if (this.currentUser.id != null) {
-          this.accommodationService.getAccommodationsForOwner(this.currentUser.id).subscribe({
+          this.accommodationService.getPendingAccommodations().subscribe({
               next: (data: Accommodation[]) => {
                   this.accommodations = data;
               }
@@ -40,9 +40,8 @@ export class ApproveAccommodationComponent {
   }
 
   loadAccommodations(){
-      if (this.currentUser.id != null) {
-          this.accommodationService.getAccommodationsForOwner(this.currentUser.id).subscribe({
-              next: (data: Accommodation[]) => {
+        this.accommodationService.getPendingAccommodations().subscribe({
+            next: (data: Accommodation[]) => {
                   // Ažuriraj smeštaj u AccommodationsComponent
                   // this.accommodations = this.accommodations.concat(data);
                   this.accommodations = data;
@@ -51,14 +50,46 @@ export class ApproveAccommodationComponent {
 
               }
           });
-      }
+      
     }
 
-    editAccommodation(index: number) {
+    viewDetails(index: number) {
         this.selectedAccommodation = this.accommodations[index];
         console.log("Selected Accommodation:");
         console.log(this.selectedAccommodation);
         this.accommodationService.setAccommodation(this.selectedAccommodation);
-        // Dalji koraci za editovanje ili rutiranje ka stranici za uređivanje informacija
+        this.router.navigate(['/details/'+this.selectedAccommodation.id]);
+    }
+
+    approveAccommodation(index: number) {
+      this.selectedAccommodation = this.accommodations[index];
+      console.log("Selected Accommodation:");
+      console.log(this.selectedAccommodation);
+      this.accommodationService.setAccommodation(this.selectedAccommodation);
+      if (this.selectedAccommodation.id != null) {
+        this.accommodationService.approveAccommodation(this.selectedAccommodation.id, 1).subscribe({
+          next: (data: any) => {
+            console.log("Data");
+            console.log(data);
+            this.loadAccommodations();
+          }
+        });
+      }
+    }
+
+    rejectAccommodation(index: number) {
+      this.selectedAccommodation = this.accommodations[index];
+      console.log("Selected Accommodation:");
+      console.log(this.selectedAccommodation);
+      this.accommodationService.setAccommodation(this.selectedAccommodation);
+      if (this.selectedAccommodation.id != null) {
+        this.accommodationService.approveAccommodation(this.selectedAccommodation.id, 0).subscribe({
+          next: (data: any) => {
+            console.log("Data");
+            console.log(data);
+            this.loadAccommodations();
+          }
+        });
+      }
     }
 }

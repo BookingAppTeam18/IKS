@@ -24,6 +24,7 @@ import {
   EditAccommodationComponent
 } from "./accommodation/edit accommodation/edit-accommodation/edit-accommodation.component";
 import { CreateAccommodationComponent } from './accommodation/create accommodation/create-accommodation/create-accommodation.component';
+import { ApproveAccommodationComponent } from './accommodation/approve-accommodation/approve-accommodation.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
   {component: UserInfoComponent, path:"user-info", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
   {component: EditUserComponent, path:"user-info/edit-user", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
   {component: ChangePasswordComponent, path:"user-info/change-password", canActivate: [AuthGuard],data: {role: [UserType.ADMIN, UserType.GUEST, UserType.OWNER]}},
-  {component: ActivateUserComponent, path:"activate"}
+  {component: ActivateUserComponent, path:"activate"},
+  {component: ApproveAccommodationComponent, path:"approve-accommodation", canActivate: [AuthGuard],data: {role: [UserType.ADMIN]}}
 
 
 ];

@@ -52,6 +52,14 @@ export class AccommodationService {
     return this.http.get<Accommodation[]>("http://localhost:8080/api/accommodations/owner/"+ownerId);
   }
 
+  getPendingAccommodations(){
+    return this.http.get<Accommodation[]>("http://localhost:8080/api/accommodations/pending");
+  }
+
+  approveAccommodation(accommodationId:number, option:number){
+    return this.http.put("http://localhost:8080/api/accommodations/approve/"+accommodationId+"/"+option, null);
+  }
+
   getAccommodations():Observable<Accommodation[]> {
     return this.http.get<Accommodation[]>(environment.apiHost+this.path);
   }
