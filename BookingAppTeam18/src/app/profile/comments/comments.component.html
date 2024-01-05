@@ -1,3 +1,15 @@
+<div class="comment-container">
+  <div class="comment-box">
+    <div class="username-box">Username: Ulogovani user</div>
+    <div class="comment-wrapper">
+      <div class="comment-content">
+        <p>poruka</p>
+      </div>
+      <button class="report-button regular-button">Report</button>
+    </div>
+  </div>
+</div>
+
 <div class="comment-container" *ngFor="let comment of comments">
     <div class="comment-box">
         <div class="username-box">Username: {{comment.writtenByName}}</div>

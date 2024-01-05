@@ -14,15 +14,27 @@ export class AppComponent {
   currentUser: Profile;
 
 
-  constructor(private accountService: AccountService) {
-    console.log("USER:::");
-    console.log(this.currentUser); }
+  constructor(private accountService: AccountService) {}
 
   ngOnInit() {
-    this.accountService.currentUser.subscribe(user => {
+    const jwtToken = localStorage.getItem('jwt');
+    console.log(jwtToken);
+
+    if (jwtToken) {
+      this.accountService.getMyInfo().subscribe(
+        (user) => {
+          this.currentUser = user;
+          console.log(this.currentUser);
+        },
+        (error) => {
+          console.error('Error fetching user info:', error);
+        }
+      );
+    }
+
+    // Subscribe to changes in the current user
+    this.accountService.currentUser.subscribe((user) => {
       this.currentUser = user;
-      console.log("USER:::");
-      console.log(this.currentUser);
     });
   }
   isGuest(userType: string | number): boolean {

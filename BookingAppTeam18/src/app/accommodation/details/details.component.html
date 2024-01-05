@@ -14,7 +14,7 @@
         <div class="info_row">
           <label>Name: {{accommodationDetailsDTO.accommodationDTO.name}}</label>
         </div>
-        <div class="info_row">
+        <div class="info_row" (click)="navigateToUserInfo(accommodationDetailsDTO.accommodationDTO.ownerId)">
           <label >Owner: {{accommodationDetailsDTO.accommodationDTO.ownerId}}</label>
         </div>
         <div class="info_row">
