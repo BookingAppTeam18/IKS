@@ -82,8 +82,11 @@ export class DetailsComponent {
         }
       });
     })
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-
+  navigateToUserInfo(userId: number): void {
+    this.router.navigate(['/user-info'], { queryParams: { userId: userId } });
   }
 
   getBenefitIcon(benefit: Benefit):string {

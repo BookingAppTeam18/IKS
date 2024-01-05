@@ -42,6 +42,7 @@ export class AccommodationsComponent implements OnInit{
   }
   ngOnInit() {
     this.loadNFilteredAccommodations();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
   }
 

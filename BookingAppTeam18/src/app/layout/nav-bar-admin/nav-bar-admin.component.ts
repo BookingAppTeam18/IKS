@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import {FilterComponent} from "../../accommodation/filter/filter.component";
 import {MatDialog} from "@angular/material/dialog";
 import {SharedDataService} from "../../accommodation/service/shared-data.service";
+import {Router} from "@angular/router";
+import {Profile} from "../../profile/model/profile.module";
+import {AccountService} from "../../user/service/account.service";
+import {AuthService} from "../../user/service/auth.service";
 
 
 @Component({
@@ -11,10 +15,24 @@ import {SharedDataService} from "../../accommodation/service/shared-data.service
 })
 export class NavBarAdminComponent {
   value: string;
+  currentUser : Profile;
 
   constructor(public dialog: MatDialog,
-              private sharedDataService: SharedDataService
+              private sharedDataService: SharedDataService,
+              private accountService: AccountService,
+              private authService: AuthService,
+              private router: Router
+
   ) {}
+
+  ngOnInit(): void {
+    this.accountService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      console.log("USER:::");
+      console.log(this.currentUser);
+    });
+
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FilterComponent, {
@@ -27,6 +45,14 @@ export class NavBarAdminComponent {
       this.value = "";
     console.log(this.value);
     this.sharedDataService.Search(this.value);
+  }
+
+  navigateToAccount(): void {
+    this.router.navigate(['/user-info'], { queryParams: { userId: this.currentUser.id } });
+  }
+
+  LogOut() {
+    this.authService.logout();
   }
 }
 

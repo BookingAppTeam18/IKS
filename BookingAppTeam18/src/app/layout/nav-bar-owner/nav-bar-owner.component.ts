@@ -5,6 +5,7 @@ import {FilterComponent} from "../../accommodation/filter/filter.component";
 import {AccountService} from "../../user/service/account.service";
 import {Profile} from "../../profile/model/profile.module";
 import { Router } from '@angular/router';
+import {AuthService} from "../../user/service/auth.service";
 
 @Component({
   selector: 'app-nav-bar-owner',
@@ -18,9 +19,14 @@ export class NavBarOwnerComponent implements OnInit{
   constructor(public dialog: MatDialog,
               private sharedDataService: SharedDataService,
               private accountService: AccountService,
+              private authService: AuthService,
               private router: Router
 
   ) {}
+
+  LogOut() {
+    this.authService.logout();
+  }
 
   ngOnInit(): void {
     this.accountService.currentUser.subscribe(user => {
@@ -34,11 +40,10 @@ export class NavBarOwnerComponent implements OnInit{
   openDialog(): void {
     const dialogRef = this.dialog.open(FilterComponent, {
     });
-
   }
 
   navigateToAccount(): void {
-    this.router.navigate(['/user-info']);
+    this.router.navigate(['/user-info'], { queryParams: { userId: this.currentUser.id } });
   }
 
   navigateToRequests(): void {
