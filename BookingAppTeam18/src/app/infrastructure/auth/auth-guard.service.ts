@@ -31,13 +31,7 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     const userRole :UserType = this.accountService.getCurrentUserValue().userType;
-      console.log(userRole);
-    // if (userRole === UserType.ANONYMUS) {
-    //   this.router.navigate(['log-in']);
-    //   return false;
-    // }
-    console.log(route.data['role']);
-    
+
     if (!route.data['role'].includes(UserTypeHelper.stringToEnumValue(userRole))) {
       this.router.navigate(['']);
       return false;

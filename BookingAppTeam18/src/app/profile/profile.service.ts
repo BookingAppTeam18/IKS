@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Profile } from './model/profile.module';
+import {Profile, ProfileDTO} from './model/profile.module';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,5 +23,11 @@ export class ProfileService {
   deleteUser(userId: number): Observable<Profile> {
     const url = `http://localhost:8080/api/users/${userId}`;
     return this.http.delete<Profile>(url);
+  }
+
+  getProfileDTO(userId: number) {
+    const url = `http://localhost:8080/api/users/userDetails/${userId}`;
+    return this.http.get<ProfileDTO>(url);
+
   }
 }

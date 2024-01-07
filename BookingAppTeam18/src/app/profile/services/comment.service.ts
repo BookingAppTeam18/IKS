@@ -4,8 +4,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AccommodationInfo} from "../../accommodation/accommodations/model/accommodationInfo";
 import {environment} from "../../../env/env";
-import {AccommodationModule} from "../../accommodation/accommodation.module";
-import {AccommodationDetails} from "../../accommodation/details/model/accommodationDetails";
+import {Comment} from "../comments/model/comment"
+
 
 @Injectable({
   providedIn: 'root'

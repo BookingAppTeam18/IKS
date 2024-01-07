@@ -1,8 +1,9 @@
 import { UserState } from "./userState";
-import { UserType } from "./userType"
+import { UserType } from "./userType";
+import {Comment} from "../comments/model/comment";
 
 export interface Profile{
-    id?:number;
+    id:number;
     firstName:string;
     lastName:string;
     email:string;
@@ -12,7 +13,13 @@ export interface Profile{
     userType: UserType;
     userState? : UserState;
 }
+
+export interface ProfileDTO{
+  profile:Profile
+  profileComments:Comment[]
+}
 export const anonymus: Profile = {
+  id:-1,
   firstName: '',
   lastName: '',
   email: '',

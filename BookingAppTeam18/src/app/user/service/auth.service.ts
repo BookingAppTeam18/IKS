@@ -20,15 +20,20 @@ export interface LoginUser {
 })
 export class AuthService {
 
+  private access_token:string|null = null;
   constructor(
     private apiService: ApiService,
     private userService: AccountService,
     private config: ConfigService,
     private router: Router
   ) {
+    // Provera localStorage-a pri inicijalizaciji
+    const storedToken = localStorage.getItem("jwt");
+    if (storedToken) {
+      this.access_token = storedToken;
+    }
   }
 
-  private access_token = null;
 
   login(user:LoginUser) {
     const loginHeaders = new HttpHeaders({
@@ -44,7 +49,6 @@ export class AuthService {
       .pipe(map((res) => {
         console.log('Login success');
         this.access_token = res.body.accessToken;
-        console.log(this.access_token);
         localStorage.setItem("jwt", res.body.accessToken)
       }));
   }
@@ -75,6 +79,6 @@ export class AuthService {
     return this.access_token;
   }
 
-  
+
 
 }

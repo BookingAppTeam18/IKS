@@ -24,7 +24,6 @@ export class AppComponent {
       this.accountService.getMyInfo().subscribe(
         (user) => {
           this.currentUser = user;
-          console.log(this.currentUser);
         },
         (error) => {
           console.error('Error fetching user info:', error);

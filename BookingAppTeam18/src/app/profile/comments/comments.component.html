@@ -1,16 +1,16 @@
-<div class="comment-container">
-  <div class="comment-box">
+<div *ngIf="currentProfile && currentProfile.userType !== UserType.ANONYMUS && !isAdmin(currentProfile.userType)" class="comment-container">
+<div class="comment-box">
     <div class="user-rating-container">
       <div class="username-box">User: {{currentProfile.email}}</div>
-      <div class="rating-box-comment" (mouseleave)="resetStars()">
-      <span
-        *ngFor="let star of stars; let i = index"
-        (mouseover)="highlightStars(i)"
-        (click)="setRating(i + 1)"
-        [ngClass]="{ 'active': stars[i] }"
-      >
-        ★
-      </span>
+      <div class="rating-box" (mouseleave)="resetStars()">
+        <span
+          *ngFor="let star of stars; let i = index"
+          (mouseover)="highlightStars(i)"
+          (click)="setRating(i + 1)"
+          [ngClass]="{ 'active': stars[i] }"
+        >
+          ★
+        </span>
         <div class="rating-value">{{ rating }}</div>
       </div>
     </div>
@@ -30,12 +30,12 @@
         <div class="username-box">Username: {{comment.writtenByName}}</div>
         <div class="rating-box">
           <span
-             *ngFor="let star of getStars(comment.rate); let j = index"
-             [ngClass]="{ 'active': stars[j] }"
-           >
+            *ngFor="let star of getStars(comment.rate); let j = index"
+            [ngClass]="{ 'active': j < comment.rate }"
+          >
             ★
           </span>
-       </div>
+        </div>
       </div>
       <div class="comment-wrapper">
           <div class="comment-content">

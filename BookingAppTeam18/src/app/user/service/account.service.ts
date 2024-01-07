@@ -37,7 +37,6 @@ export class AccountService {
       .pipe(
         map(profile => {
           this.currentUserSubject.next(profile);
-          console.log(this.currentUser);
           return profile;
         })
       );

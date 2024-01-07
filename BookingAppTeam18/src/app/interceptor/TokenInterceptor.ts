@@ -11,8 +11,11 @@ import {AuthService} from "../user/service/auth.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService) {
+    console.log('TokenInterceptor initialized');
+  }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('Intercepting request:', request);
 
     if (this.auth.tokenIsPresent()) {
       request = request.clone({

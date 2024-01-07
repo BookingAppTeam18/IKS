@@ -25,6 +25,7 @@ export class RegisterComponent {
   signUp(): void {
     console.log(this.registerForm.value);
     const profile: Profile = {
+      id:-1,
       firstName: this.registerForm.value.firstName || '',
       lastName: this.registerForm.value.lastName || '',
       email: this.registerForm.value.email || '',
@@ -44,8 +45,8 @@ export class RegisterComponent {
     profile.password = this.registerForm.value.password || '';
     this.accountService.createAccount(profile).subscribe(
       (response: any) => {
-        
-       
+
+
         console.log('Registracija uspješna:', response);
       },
       (error: any) => {
@@ -53,6 +54,6 @@ export class RegisterComponent {
       }
     );
   }
-  
+
 
 }

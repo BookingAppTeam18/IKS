@@ -38,8 +38,8 @@ body{
   padding: 5px;
   margin-bottom: 10px;
 }
+
 .rating-box {
-  margin-left: auto; /* Postavlja rating-box da bude na kraju reda (desno) */
   display: flex;
   align-items: center; /* Centrira zvezdice vertikalno sa tekstom */
 }
@@ -48,6 +48,19 @@ body{
   display: flex;
 }
 
+.rating-box span {
+  cursor: pointer;
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #6D8DCB; /* Set the initial color to gray */
+}
+
+.rating-box span:hover {
+  color:  #2A4D82;
+}
+
+.rating-box .active {
+  color:  #2A4D82;
+}
 
 .comment-wrapper {
     display: flex;

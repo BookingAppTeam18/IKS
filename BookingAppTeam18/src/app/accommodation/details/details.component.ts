@@ -52,17 +52,18 @@ export class DetailsComponent {
 
   currentUser: Profile;
 
-  constructor(private route: ActivatedRoute, private router: Router,  private imageService: ImageService, private accommodationService: AccommodationService, private accountService: AccountService, private mapService : MapService) {
-    console.log("USER:::");
-    console.log(this.currentUser);
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private imageService: ImageService,
+              private accommodationService: AccommodationService,
+              private accountService: AccountService,
+              private mapService : MapService) {
   }
 
 
   ngOnInit(): void {
     this.accountService.currentUser.subscribe(user => {
       this.currentUser = user;
-      console.log("USER:::");
-      console.log(this.currentUser);
     });
     this.route.params.subscribe((params) => {
       const id = +params['accommodationId']
@@ -77,7 +78,6 @@ export class DetailsComponent {
       this.accommodationService.getAccommodationDetails(id).subscribe({
         next: (data: AccommodationDetails) => {
           this.accommodationDetailsDTO = data
-          console.log(data.accommodationDTO.gallery);
           marker([this.accommodationDetailsDTO.accommodationDTO.latitude, this.accommodationDetailsDTO.accommodationDTO.longitude]).addTo(this.map);
         }
       });
