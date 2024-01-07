@@ -4,13 +4,18 @@ body{
 }
 
 .comment-container {
-    max-width: 100%;
-    margin: 20px;
+    max-width:90%;
+    margin: 2%;
     box-sizing: border-box;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
 }
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 .comment-box {
     background-color: white;
@@ -27,6 +32,22 @@ body{
     border: 1px solid #ccc;
     margin-bottom: 5px;
 }
+.comment-input {
+  resize: none;
+  height: 100px; /* Prilagodite visinu prema potrebama */
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.rating-box {
+  margin-left: auto; /* Postavlja rating-box da bude na kraju reda (desno) */
+  display: flex;
+  align-items: center; /* Centrira zvezdice vertikalno sa tekstom */
+}
+
+.user-rating-container {
+  display: flex;
+}
+
 
 .comment-wrapper {
     display: flex;

@@ -7,5 +7,4 @@ export interface Comment{
    writtenByName:string;
    writtenToId:number;
    page:Page;
-
 }

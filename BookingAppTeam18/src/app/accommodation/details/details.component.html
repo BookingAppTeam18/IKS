@@ -52,11 +52,13 @@
 </div>
 
 
-<div class="comments">
-  <app-comments [comments]="accommodationDetailsDTO.commentsDTO"></app-comments>
-</div>
 <div class="mapa">
   <app-map></app-map>
+</div>
+
+
+<div class="comments">
+  <app-comments [comments]="accommodationDetailsDTO.commentsDTO" [currentProfile]="currentUser"></app-comments>
 </div>
 
 </body>

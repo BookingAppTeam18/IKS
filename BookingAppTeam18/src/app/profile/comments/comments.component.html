@@ -1,24 +1,48 @@
 <div class="comment-container">
   <div class="comment-box">
-    <div class="username-box">Username: Ulogovani user</div>
-    <div class="comment-wrapper">
-      <div class="comment-content">
-        <p>poruka</p>
+    <div class="user-rating-container">
+      <div class="username-box">User: {{currentProfile.email}}</div>
+      <div class="rating-box-comment" (mouseleave)="resetStars()">
+      <span
+        *ngFor="let star of stars; let i = index"
+        (mouseover)="highlightStars(i)"
+        (click)="setRating(i + 1)"
+        [ngClass]="{ 'active': stars[i] }"
+      >
+        ★
+      </span>
+        <div class="rating-value">{{ rating }}</div>
       </div>
-      <button class="report-button regular-button">Report</button>
+    </div>
+    <div class="comment-wrapper">
+      <textarea class="comment-input" placeholder="Enter your comment..."  [(ngModel)]="newComment"></textarea>
+      <div class="buttons-container">
+        <button class="report-button regular-button" (click)="postComment()">Comment</button>
+        <button class="report-button regular-button">Report</button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="comment-container" *ngFor="let comment of comments">
     <div class="comment-box">
+      <div class="user-rating-container">
         <div class="username-box">Username: {{comment.writtenByName}}</div>
-        <div class="comment-wrapper">
-            <div class="comment-content">
-                <p>{{comment.message}}</p>
-            </div>
-            <button class="report-button regular-button">Report</button>
-        </div>
+        <div class="rating-box">
+          <span
+             *ngFor="let star of getStars(comment.rate); let j = index"
+             [ngClass]="{ 'active': stars[j] }"
+           >
+            ★
+          </span>
+       </div>
+      </div>
+      <div class="comment-wrapper">
+          <div class="comment-content">
+              <p>{{comment.message}}</p>
+          </div>
+          <button class="report-button regular-button">Report</button>
+      </div>
     </div>
 </div>
 

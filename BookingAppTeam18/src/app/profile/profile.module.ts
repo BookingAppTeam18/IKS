@@ -4,7 +4,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { CommentsComponent } from './comments/comments.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -15,10 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditUserComponent,
     ChangePasswordComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   exports:[
     UserInfoComponent,
     CommentsComponent,
